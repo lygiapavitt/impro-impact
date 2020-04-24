@@ -7,6 +7,8 @@ module.exports = {
     plugins: [
         "gatsby-plugin-theme-ui",
         `gatsby-plugin-react-helmet`,
+        `gatsby-transformer-sharp`,
+        `gatsby-plugin-sharp`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -14,8 +16,6 @@ module.exports = {
                 path: `${__dirname}/src/images`,
             },
         },
-        `gatsby-transformer-sharp`,
-        `gatsby-plugin-sharp`,
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
@@ -40,22 +40,8 @@ module.exports = {
             options: {
                 fonts: [
                     {
-                        family: `Roboto Mono`,
-                        variants: [`300`, `600`],
-                    },
-                    {
                         family: `Montserrat`,
                         variants: [`200`, `200italic`, `500`],
-                        subsets: [`latin`],
-                    },
-                    {
-                        family: `Lato`,
-                        variants: [`300`, `300italic`, `600`],
-                        subsets: [`latin`],
-                    },
-                    {
-                        family: `Alegreya Sans SC`,
-                        variants: [`300`, `300italic`, `600`],
                         subsets: [`latin`],
                     },
                 ],

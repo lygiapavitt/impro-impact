@@ -10,7 +10,7 @@ import content from "../pages-content/landing"
 
 import { Hero, ScrollDownIndicator } from "react-landing-page"
 import { Parallax } from "react-scroll-parallax"
-import { Box, Flex } from "rebass"
+import { Box, Flex, Link as RebassLink } from "rebass"
 import Img from "gatsby-image"
 import Scroll from "react-scroll-to-element"
 import { useColorMode } from "theme-ui"
@@ -83,28 +83,36 @@ const LandingLayout = props => {
                             width={iconWidthBreakpoints}
                             m={paddingBreakpoints}
                         >
-                            <Img
-                                fluid={
-                                    props.images.facebook.childImageSharp.fluid
-                                }
-                            ></Img>
+                            <RebassLink href="https://www.facebook.com/Helvetia2050-107783550783658/">
+                                <Img
+                                    fluid={
+                                        props.images.facebook.childImageSharp
+                                            .fluid
+                                    }
+                                ></Img>
+                            </RebassLink>
                         </Box>
                     </Parallax>
                     <Box width={iconWidthBreakpoints} m={paddingBreakpoints}>
-                        <Img
-                            fluid={props.images.mail.childImageSharp.fluid}
-                        ></Img>
+                        <RebassLink href="mailto:impro-impact@pm.me">
+                            <Img
+                                fluid={props.images.mail.childImageSharp.fluid}
+                            ></Img>
+                        </RebassLink>
                     </Box>
                     <Parallax x={[0, 100]}>
                         <Box
                             width={iconWidthBreakpoints}
                             m={paddingBreakpoints}
                         >
-                            <Img
-                                fluid={
-                                    props.images.instagram.childImageSharp.fluid
-                                }
-                            ></Img>
+                            <RebassLink href="https://www.instagram.com/helvetia2050/">
+                                <Img
+                                    fluid={
+                                        props.images.instagram.childImageSharp
+                                            .fluid
+                                    }
+                                ></Img>
+                            </RebassLink>
                         </Box>
                     </Parallax>
                 </Flex>

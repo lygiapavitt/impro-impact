@@ -1,4 +1,7 @@
 let content = {
+    landing: {
+        title: "Un genre de spectacle",
+    },
     paragraph1: {
         title: "Spectacle en (dé)construction…",
         content:

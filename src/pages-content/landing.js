@@ -1,8 +1,9 @@
 let content = {
     paragraph1: {
-        title: "5, 4, 3, 2, 1... Impro Impact",
+        title:
+            "Le spectacle et les ateliers vous intéressent ? Contactez-nous.",
         content:
-            "Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle. By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver. Looking down into the dark gulf below, I could see a ruddy light streaming through a rift in the clouds.",
+            "Impro impact » fait converger la pratique de l’improvisation théâtrale avec vos objectifs de sensibilisation du public. Grâce à l’impro, votre message devient interactif, ludique et mémorable ! Nous proposons une gamme de spectacle sur les thématiques suivantes : la crise écologique (« Helvetia2050 »), l’égalité des genres (« Un genre de spectacle ») et la communication scientifique (« Science&Audience »). Nous proposons également une palette d’ateliers pratiques en lien avec ces thématiques.  Ensemble, nous trouvons des solutions concrètes et sur-mesure pour diffuser ce qui vous tient à cœur.",
     },
     damian: {
         title: "Damian Veiga",

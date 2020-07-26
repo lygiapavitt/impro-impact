@@ -4,8 +4,8 @@ import React from "react"
 
 import { useStaticQuery, graphql } from "gatsby"
 
-import Title from "../components/title"
-import content from "../pages-content/genre"
+import Title from "./title"
+import content from "../pages-content/science"
 
 import { Hero, ScrollDownIndicator } from "react-landing-page"
 import { Parallax } from "react-scroll-parallax"
@@ -27,13 +27,13 @@ export const defaultImage = graphql`
     }
 `
 
-const GenreLayout = props => {
+const ScienceLayout = props => {
     const data = useStaticQuery(graphql`
         query {
-            landingImage: file(relativePath: { eq: "genre.jpg" }) {
+            landingImage: file(relativePath: { eq: "science_landing.jpg" }) {
                 ...defaultImage
             }
-            middleImage: file(relativePath: { eq: "genre.jpg" }) {
+            middleImage: file(relativePath: { eq: "science_second.jpg" }) {
                 ...defaultImage
             }
         }
@@ -69,7 +69,7 @@ const GenreLayout = props => {
     }
 
     const [colorMode, setColorMode] = useColorMode()
-    setColorMode("genre")
+    setColorMode("science")
 
     return (
         <>
@@ -109,7 +109,7 @@ const GenreLayout = props => {
                             my={stackedParallaxedYMargin}
                         >
                             <Parallax y={[30, -30]}>
-                                <Title width={1}>
+                                <Title width={1} bg="background">
                                     {content.paragraph1.title}
                                 </Title>
                             </Parallax>
@@ -143,59 +143,7 @@ const GenreLayout = props => {
                         letterSpacing: lettersSpacingBreakpoints,
                     }}
                 >
-                    {content.hero1.title}
-                </Title>
-            </Hero>
-
-            <Waypoint onEnter={setNavbarTransparent} />
-
-            <Hero>
-                <Flex alignItems="center" flexWrap="wrap" width={1}>
-                    <Flex alignItems="center" width={halfWidthBreakpoints}>
-                        <Box
-                            p={paddingBreakpoints}
-                            mx="auto"
-                            width={1}
-                            sx={{ textAlign: "justify" }}
-                        >
-                            <Parallax y={[-30, 30]}>
-                                {content.paragraph2.content}
-                            </Parallax>
-                        </Box>
-                    </Flex>
-                    <Flex alignItems="center" width={halfWidthBreakpoints}>
-                        <Box
-                            p={paddingBreakpoints}
-                            mx="auto"
-                            my={stackedParallaxedYMargin}
-                            sx={{
-                                fontSize: contentTitleFontSizeBreakpoints,
-                            }}
-                        >
-                            <Parallax y={[30, -30]}>
-                                <Title width={1}>
-                                    {content.paragraph2.title}
-                                </Title>
-                            </Parallax>
-                        </Box>
-                    </Flex>
-                </Flex>
-            </Hero>
-
-            <Waypoint onEnter={setNavbarOpaque} />
-
-            <Hero
-                bg="rgba(255, 255, 255, 0.5)"
-                backgroundImage={data.landingImage.childImageSharp.fluid.src}
-            >
-                <Title
-                    sx={{
-                        textAlign: "center",
-                        fontSize: [24, 30, 40, 56, 64, 80],
-                        letterSpacing: lettersSpacingBreakpoints,
-                    }}
-                >
-                    <Parallax x={[0, 0]}>{content.hero2.title}</Parallax>
+                    <Parallax x={[0, 0]}>{content.hero1.title}</Parallax>
                 </Title>
 
                 <Flex
@@ -211,12 +159,12 @@ const GenreLayout = props => {
                                 textAlign: "center",
                             }}
                         >
-                            {content.hero2.subtitle}
+                            {content.hero1.subtitle}
                         </Box>
                     </Parallax>
                     <Parallax x={[0, 0]}>
                         <Box m={paddingBreakpoints}>
-                            {content.hero2.content}
+                            {content.hero1.content}
                         </Box>
                     </Parallax>
                 </Flex>
@@ -227,4 +175,4 @@ const GenreLayout = props => {
     )
 }
 
-export default GenreLayout
+export default ScienceLayout

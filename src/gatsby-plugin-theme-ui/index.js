@@ -24,9 +24,9 @@ export default {
                 accent: "#73c7d0",
                 muted: "#f6f6f6",
             },
-            pro: {
+            science: {
                 text: "#1C1C1C",
-                background: "#e4fffe",
+                background: "#d3f5fe",
                 primary: "#c1f0f9",
                 secondary: "#92e3e9",
                 accent: "#73c7d0",

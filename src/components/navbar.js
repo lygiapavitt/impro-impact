@@ -104,34 +104,40 @@ class Navbar extends React.Component {
                         Genre
                     </Link>
                     <Box mx="auto" />
-                    <Link to="/genre/" variant="nav">
+                    <Link to="/science/" variant="nav">
                         Sciences et Avenir
                     </Link>
                     <Box mt="40%">
                         <Flex alignItems="center" justifyContent="spaceEvenly">
                             <Box width={iconWidthBreakpoints} mx="auto">
-                                <Img
-                                    fluid={
-                                        this.props.images.facebook
-                                            .childImageSharp.fluid
-                                    }
-                                ></Img>
+                                <RebassLink href="https://www.facebook.com/Helvetia2050-107783550783658/">
+                                    <Img
+                                        fluid={
+                                            this.props.images.facebook
+                                                .childImageSharp.fluid
+                                        }
+                                    ></Img>
+                                </RebassLink>
                             </Box>
                             <Box width={iconWidthBreakpoints} mx="auto">
-                                <Img
-                                    fluid={
-                                        this.props.images.mail.childImageSharp
-                                            .fluid
-                                    }
-                                ></Img>
+                                <RebassLink href="mailto:impro-impact@pm.me">
+                                    <Img
+                                        fluid={
+                                            this.props.images.mail
+                                                .childImageSharp.fluid
+                                        }
+                                    ></Img>
+                                </RebassLink>
                             </Box>
                             <Box width={iconWidthBreakpoints} mx="auto">
-                                <Img
-                                    fluid={
-                                        this.props.images.instagram
-                                            .childImageSharp.fluid
-                                    }
-                                ></Img>
+                                <RebassLink href="https://www.instagram.com/helvetia2050/">
+                                    <Img
+                                        fluid={
+                                            this.props.images.instagram
+                                                .childImageSharp.fluid
+                                        }
+                                    ></Img>
+                                </RebassLink>
                             </Box>
                         </Flex>
                     </Box>

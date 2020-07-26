@@ -59,7 +59,7 @@ a {
 
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
-    fill: rgba(252, 253, 232, 0.8);
+    fill: rgba(255, 255, 255, 0.8);
 }
 
 /* Wrapper for item list */

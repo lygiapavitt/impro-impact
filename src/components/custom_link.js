@@ -7,7 +7,8 @@ import { Link as RebassLink, Text } from "rebass"
 const Link = props => (
     <GatsbyLink
         {...props}
-        style={{ boxShadow: "none", textDecoration: "none" }}
+        width={1}
+        style={{ boxShadow: "none", textDecoration: "none", border: "none" }}
     >
         <Text p={2} sx={{ color: "text" }}>
             {props.children}

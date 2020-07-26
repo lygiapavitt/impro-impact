@@ -5,7 +5,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Title from "../components/title"
-import content from "../pages-content/helvetia"
+import content from "../pages-content/genre"
 
 import { Hero, ScrollDownIndicator } from "react-landing-page"
 import { Parallax } from "react-scroll-parallax"
@@ -13,16 +13,9 @@ import { Box, Flex, Text } from "rebass"
 import Scroll from "react-scroll-to-element"
 import { useColorMode } from "theme-ui"
 
-import { Waypoint } from "react-waypoint"
+import { contentTitleFontSizeBreakpoints } from "../helpers/globals"
 
-import {
-    halfWidthBreakpoints,
-    stackedParallaxedYMargin,
-    paddingBreakpoints,
-    iconWidthBreakpoints,
-    lettersSpacingBreakpoints,
-    contentTitleFontSizeBreakpoints,
-} from "../helpers/globals"
+import { Waypoint } from "react-waypoint"
 
 export const defaultImage = graphql`
     fragment defaultImage on File {
@@ -34,13 +27,13 @@ export const defaultImage = graphql`
     }
 `
 
-const HelvetiaLayout = props => {
+const GenreLayout = props => {
     const data = useStaticQuery(graphql`
         query {
-            landingImage: file(relativePath: { eq: "26.jpg" }) {
+            landingImage: file(relativePath: { eq: "genre.jpg" }) {
                 ...defaultImage
             }
-            middleImage: file(relativePath: { eq: "404.jpg" }) {
+            middleImage: file(relativePath: { eq: "genre.jpg" }) {
                 ...defaultImage
             }
         }
@@ -76,35 +69,7 @@ const HelvetiaLayout = props => {
     }
 
     const [colorMode, setColorMode] = useColorMode()
-    setColorMode("helvetia")
-
-    const TitleLetter = props => (
-        <Parallax y={props.parallax}>
-            <Box width={iconWidthBreakpoints} m={paddingBreakpoints}>
-                <Title
-                    {...props}
-                    css={{
-                        "@keyframes slightRotation": {
-                            from: {
-                                transform: "rotate(" + props.rotate[0] + "deg)",
-                            },
-                            to: {
-                                transform: "rotate(" + props.rotate[1] + "deg)",
-                            },
-                        },
-
-                        animationName: "slightRotation",
-                        animationDuration: "" + props.duration + "s",
-                        animationTimingFunction: "ease-in-out",
-                        animationDirection: "alternate",
-                        animationIterationCount: "infinite",
-                    }}
-                >
-                    {props.children}
-                </Title>
-            </Box>
-        </Parallax>
-    )
+    setColorMode("genre")
 
     return (
         <>
@@ -113,55 +78,21 @@ const HelvetiaLayout = props => {
                 onLeave={setNavbarTransparent}
             />
             <Hero
-                bg="rgba(255, 255, 255, 0.6)"
+                bg="rgba(255, 255, 255, 0.5)"
                 backgroundImage={data.landingImage.childImageSharp.fluid.src}
+                sx={{
+                    backgroundRepeat: "repeat-y",
+                }}
             >
                 <Title
                     sx={{
-                        marginTop: "-280px",
                         textAlign: "center",
                         fontSize: [24, 30, 40, 56, 64, 80],
                         letterSpacing: lettersSpacingBreakpoints,
                     }}
                 >
-                    HELVETIA
+                    Un genre de spectacle
                 </Title>
-
-                <Flex
-                    alignItems="center"
-                    justifyContent="center"
-                    flexWrap="wrap"
-                    width={0.5}
-                >
-                    <TitleLetter
-                        parallax={[0, 15]}
-                        rotate={[-7, 7]}
-                        duration={6}
-                    >
-                        2
-                    </TitleLetter>
-                    <TitleLetter
-                        parallax={[0, 33]}
-                        rotate={[-7, 7]}
-                        duration={4}
-                    >
-                        0
-                    </TitleLetter>
-                    <TitleLetter
-                        parallax={[0, 51]}
-                        rotate={[-7, 7]}
-                        duration={7}
-                    >
-                        5
-                    </TitleLetter>
-                    <TitleLetter
-                        parallax={[0, 81]}
-                        rotate={[-7, 7]}
-                        duration={5}
-                    >
-                        0
-                    </TitleLetter>
-                </Flex>
                 <Scroll type="id" element="content">
                     <ScrollDownIndicator />
                 </Scroll>
@@ -252,8 +183,48 @@ const HelvetiaLayout = props => {
             </Hero>
 
             <Waypoint onEnter={setNavbarOpaque} />
+
+            <Hero
+                bg="rgba(255, 255, 255, 0.5)"
+                backgroundImage={data.landingImage.childImageSharp.fluid.src}
+            >
+                <Title
+                    sx={{
+                        textAlign: "center",
+                        fontSize: [24, 30, 40, 56, 64, 80],
+                        letterSpacing: lettersSpacingBreakpoints,
+                    }}
+                >
+                    <Parallax x={[0, 0]}>{content.hero2.title}</Parallax>
+                </Title>
+
+                <Flex
+                    alignItems="center"
+                    justifyContent="center"
+                    flexWrap="wrap"
+                    width={0.5}
+                >
+                    <Parallax x={[0, 0]}>
+                        <Box
+                            m={paddingBreakpoints}
+                            sx={{
+                                textAlign: "center",
+                            }}
+                        >
+                            {content.hero2.subtitle}
+                        </Box>
+                    </Parallax>
+                    <Parallax x={[0, 0]}>
+                        <Box m={paddingBreakpoints}>
+                            {content.hero2.content}
+                        </Box>
+                    </Parallax>
+                </Flex>
+            </Hero>
+
+            <Waypoint onEnter={setNavbarTransparent} />
         </>
     )
 }
 
-export default HelvetiaLayout
+export default GenreLayout

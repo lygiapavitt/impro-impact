@@ -7,6 +7,7 @@ const Title = props => (
         {...props}
         sx={{
             fontWeight: "heading",
+            textAlign: "center",
         }}
     >
         {props.children}

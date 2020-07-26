@@ -2,9 +2,16 @@
 import { jsx } from "theme-ui"
 import React from "react"
 
-import { Box, Flex } from "rebass"
+import { slide as Menu } from "react-burger-menu"
+import { HamburgerMenu as HamburgerButton } from "react-hamburger-menu"
+import { Box, Flex, Link as RebassLink } from "rebass"
+import Img from "gatsby-image"
 
-import Link from "../components/customLink"
+import Link from "./custom_link"
+
+import "./layout.css"
+
+import { iconWidthBreakpoints } from "../helpers/globals"
 
 class Navbar extends React.Component {
     constructor(props) {
@@ -18,17 +25,17 @@ class Navbar extends React.Component {
             0: {
                 mixBlendMode: "normal",
                 backdropFilter: "none",
-                backgroundColor: "rgba(193, 193, 174, 0)",
+                backgroundColor: "rgba(128, 128, 128, 0)",
             },
             1: {
                 mixBlendMode: "luminosity",
                 backdropFilter: "blur(70px)",
-                backgroundColor: "rgba(193, 193, 174, 0.4)",
+                backgroundColor: "rgba(128, 128, 128, 0.4)",
             },
             2: {
                 mixBlendMode: "normal",
                 backdropFilter: "none",
-                backgroundColor: "rgba(193, 193, 174, 0.8)",
+                backgroundColor: "rgba(255, 255, 255, 0.8)",
             },
         }
 
@@ -51,14 +58,14 @@ class Navbar extends React.Component {
         this.setState(state => ({ mode: this.opaque }))
     }
 
+    showSettings(event) {
+        event.preventDefault()
+    }
+
     render() {
         return (
-            <Flex
-                px={[10, 20, 30, 80, 100, 100]}
-                pt={33}
-                pb={33}
+            <Box
                 width={1}
-                alignItems="center"
                 sx={{
                     position: "fixed",
                     zIndex: 9999,
@@ -69,45 +76,67 @@ class Navbar extends React.Component {
                 }}
                 css={{
                     "@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none)": {
-                        /*"@keyframes backgroundFade": {
-                            from: {
-                                backgroundColor: this.modes[this.oldState]
-                                    .backgroundColor,
-                                backdropFilter: this.modes[this.oldState]
-                                    .backdropFilter,
-                            },
-                            to: {
-                                backgroundColor: this.modes[this.state.mode]
-                                    .backgroundColor,
-                                backdropFilter: this.modes[this.state.mode]
-                                    .backdropFilter,
-                            },
-                        },*/
-
                         backdropFilter: this.modes[this.state.mode]
                             .backdropFilter,
                         backgroundColor: this.modes[this.state.mode]
                             .backgroundColor,
                     },
                     backgroundColor: this.modes[this.opaque].mixBlendMode,
-
-                    // animationName: "backgroundFade",
-                    // animationDuration: "1s",
-                    // animationTimingFunction: "ease-in-out",
-                    // animationFillMode: "forwards",
-
-                    mask:
-                        "linear-gradient(black, black, black, black, black, black, black, black, black, transparent 100%)",
                 }}
             >
-                <Link to="/" variant="nav">
-                    {this.props.title}
-                </Link>
-                <Box mx="auto" />
-                <Link to="/helvetia2050/" variant="nav">
-                    Helvetia2050
-                </Link>
-            </Flex>
+                <Flex
+                    px={[10, 20, 30, 80, 100, 100]}
+                    pt={33}
+                    pb={33}
+                    alignItems="center"
+                >
+                    <Link to="/" variant="nav">
+                        {this.props.title}
+                    </Link>
+                    <Box mx="auto" />
+                </Flex>
+                <Menu right>
+                    <Link to="/helvetia2050/" variant="nav">
+                        Helvetia2050
+                    </Link>
+                    <Box mx="auto" />
+                    <Link to="/genre/" variant="nav">
+                        Genre
+                    </Link>
+                    <Box mx="auto" />
+                    <Link to="/genre/" variant="nav">
+                        Sciences et Avenir
+                    </Link>
+                    <Box mt="40%">
+                        <Flex alignItems="center" justifyContent="spaceEvenly">
+                            <Box width={iconWidthBreakpoints} mx="auto">
+                                <Img
+                                    fluid={
+                                        this.props.images.facebook
+                                            .childImageSharp.fluid
+                                    }
+                                ></Img>
+                            </Box>
+                            <Box width={iconWidthBreakpoints} mx="auto">
+                                <Img
+                                    fluid={
+                                        this.props.images.mail.childImageSharp
+                                            .fluid
+                                    }
+                                ></Img>
+                            </Box>
+                            <Box width={iconWidthBreakpoints} mx="auto">
+                                <Img
+                                    fluid={
+                                        this.props.images.instagram
+                                            .childImageSharp.fluid
+                                    }
+                                ></Img>
+                            </Box>
+                        </Flex>
+                    </Box>
+                </Menu>
+            </Box>
         )
     }
 }

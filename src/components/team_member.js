@@ -61,9 +61,7 @@ const TeamMember = props => (
                                     width={1}
                                     sx={{ fontSize: 16, textAlign: "justify" }}
                                 >
-                                    Looking down into the dark gulf below, I
-                                    could see a ruddy light streaming through a
-                                    rift in the clouds.
+                                    {props.content}
                                 </Text>
                             </Parallax>
                         </Box>

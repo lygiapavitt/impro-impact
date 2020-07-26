@@ -1,11 +1,11 @@
 import React from "react"
 
 import DefaultLayout from "../components/default_layout"
-import LandingLayout from "../components/landing_layout"
+import GenreLayout from "../components/genre_layout"
 
 const Index = () => (
     <DefaultLayout>
-        <LandingLayout />
+        <GenreLayout />
     </DefaultLayout>
 )
 

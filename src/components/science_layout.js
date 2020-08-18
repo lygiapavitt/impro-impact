@@ -68,6 +68,12 @@ const ScienceLayout = props => {
         props.navbar.current.setOpaque()
     }
 
+    const Chapters = props => <Box>science</Box>
+
+    React.useEffect(() => {
+        props.navbar.current.setScienceChaptersVisible(Chapters)
+    }, [])
+
     const [colorMode, setColorMode] = useColorMode()
     setColorMode("science")
 

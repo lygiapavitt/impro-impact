@@ -26,7 +26,7 @@ export default {
             },
             science: {
                 text: "#1C1C1C",
-                background: "#d3f5fe",
+                background: "#AACBEE",
                 primary: "#c1f0f9",
                 secondary: "#92e3e9",
                 accent: "#73c7d0",

@@ -3,7 +3,6 @@ import { jsx } from "theme-ui"
 import React from "react"
 
 import { slide as Menu } from "react-burger-menu"
-import { HamburgerMenu as HamburgerButton } from "react-hamburger-menu"
 import { Box, Flex, Link as RebassLink } from "rebass"
 import Img from "gatsby-image"
 
@@ -39,27 +38,71 @@ class Navbar extends React.Component {
             },
         }
 
-        this.oldState = this.transparent
+        this.noChaptersvisible = 0
+        this.helvetiaChaptersVisible = 1
+        this.genreChaptersVisible = 2
+        this.scienceChaptersVisible = 3
+
+        this.renderChapters = () => {}
+
         this.state = {
             mode: this.transparent,
+            chaptersVisible: 0,
+            menuOpen: false,
         }
     }
 
+    handleStateChange(state) {
+        this.setState({ menuOpen: state.isOpen })
+    }
+    closeMenu = () => {
+        this.setState(state => ({ menuOpen: false }))
+    }
+
     setTransparent = () => {
-        this.oldState = this.state.mode
         this.setState(state => ({ mode: this.transparent }))
     }
     setBlur = () => {
-        this.oldState = this.state.mode
         this.setState(state => ({ mode: this.blur }))
     }
     setOpaque = () => {
-        this.oldState = this.state.mode
         this.setState(state => ({ mode: this.opaque }))
+    }
+
+    hideAllChapters = () => {
+        this.setState(state => ({ chaptersVisible: this.noChaptersvisible }))
+    }
+    setHelvetiaChaptersVisible = renderChapters => {
+        this.renderChapters = renderChapters
+        this.setState(state => ({
+            chaptersVisible: this.helvetiaChaptersVisible,
+        }))
+    }
+    setGenreChaptersVisible = renderChapters => {
+        this.renderChapters = renderChapters
+        this.setState(state => ({ chaptersVisible: this.genreChaptersVisible }))
+    }
+    setScienceChaptersVisible = renderChapters => {
+        this.renderChapters = renderChapters
+        this.setState(state => ({
+            chaptersVisible: this.scienceChaptersVisible,
+        }))
     }
 
     showSettings(event) {
         event.preventDefault()
+    }
+
+    renderHelvetiaChapters() {
+        return <Box mx="auto">helvetia chapter</Box>
+    }
+
+    renderGenreChapters() {
+        return <Box mx="auto">genre chapter</Box>
+    }
+
+    renderScienceChapters() {
+        return <Box mx="auto">science chapter</Box>
     }
 
     render() {
@@ -95,18 +138,32 @@ class Navbar extends React.Component {
                     </Link>
                     <Box mx="auto" />
                 </Flex>
-                <Menu right>
+                <Menu
+                    right
+                    width={"100%"}
+                    isOpen={this.state.menuOpen}
+                    onStateChange={state => this.handleStateChange(state)}
+                >
                     <Link to="/helvetia2050/" variant="nav">
                         Helvetia2050
                     </Link>
                     <Box mx="auto" />
+                    {this.state.chaptersVisible === this.helvetiaChaptersVisible
+                        ? this.renderChapters(this)
+                        : ""}
                     <Link to="/genre/" variant="nav">
                         Genre
                     </Link>
+                    {this.state.chaptersVisible === this.genreChaptersVisible
+                        ? this.renderChapters(this)
+                        : ""}
                     <Box mx="auto" />
                     <Link to="/science/" variant="nav">
-                        Sciences et Avenir
+                        Sciences en scène
                     </Link>
+                    {this.state.chaptersVisible === this.scienceChaptersVisible
+                        ? this.renderChapters(this)
+                        : ""}
                     <Box mt="40%">
                         <Flex alignItems="center" justifyContent="spaceEvenly">
                             <Box width={iconWidthBreakpoints} mx="auto">

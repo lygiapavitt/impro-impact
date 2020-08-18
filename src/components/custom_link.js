@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui"
 
 import { Link as GatsbyLink } from "gatsby"
-import { Link as RebassLink, Text } from "rebass"
+import { Text } from "rebass"
 
 const Link = props => (
     <GatsbyLink

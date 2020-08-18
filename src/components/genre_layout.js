@@ -68,6 +68,12 @@ const GenreLayout = props => {
         props.navbar.current.setOpaque()
     }
 
+    const Chapters = props => <Box>genre</Box>
+
+    React.useEffect(() => {
+        props.navbar.current.setGenreChaptersVisible(Chapters)
+    }, [])
+
     const [colorMode, setColorMode] = useColorMode()
     setColorMode("genre")
 

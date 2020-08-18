@@ -18,6 +18,16 @@ export const defaultImage = graphql`
     }
 `
 
+export const iconImage = graphql`
+    fragment iconImage on File {
+        childImageSharp {
+            fluid(maxWidth: 512) {
+                ...GatsbyImageSharpFluid
+            }
+        }
+    }
+`
+
 const DefaultLayout = props => {
     const images = useStaticQuery(graphql`
         query {

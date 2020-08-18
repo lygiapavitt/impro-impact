@@ -2,8 +2,6 @@
 import { jsx } from "theme-ui"
 import React from "react"
 
-import { useStaticQuery, graphql } from "gatsby"
-
 import Title from "./title"
 import TeamMember from "./team_member"
 import content from "../pages-content/landing"
@@ -25,16 +23,6 @@ import {
     lettersSpacingBreakpoints,
 } from "../helpers/globals"
 
-export const iconImage = graphql`
-    fragment iconImage on File {
-        childImageSharp {
-            fluid(maxWidth: 512) {
-                ...GatsbyImageSharpFluid
-            }
-        }
-    }
-`
-
 const LandingLayout = props => {
     const setNavbarTransparent = () => {
         props.navbar.current.setTransparent()
@@ -48,6 +36,10 @@ const LandingLayout = props => {
 
     const [colorMode, setColorMode] = useColorMode()
     setColorMode("default")
+
+    React.useEffect(() => {
+        props.navbar.current.hideAllChapters()
+    }, [])
 
     return (
         <>
@@ -162,7 +154,8 @@ const LandingLayout = props => {
                         avatar={
                             props.images.damianVeiga.childImageSharp.fluid.src
                         }
-                        content={content.damian.content}
+                        // content={content.damian.content}
+                        content=""
                     />
                     {/* <Waypoint onEnter={setNavbarBlur} /> */}
                     <TeamMember
@@ -170,7 +163,8 @@ const LandingLayout = props => {
                         avatar={
                             props.images.lygiaPavitt.childImageSharp.fluid.src
                         }
-                        content={content.lygia.content}
+                        // content={content.lygia.content}
+                        content=""
                     />
                     {/* <Waypoint onEnter={setNavbarBlur} /> */}
                     <TeamMember
@@ -178,7 +172,8 @@ const LandingLayout = props => {
                         avatar={
                             props.images.leoMoreno.childImageSharp.fluid.src
                         }
-                        content={content.leo.content}
+                        // content={content.leo.content}
+                        content=""
                     />
                     {/* <Waypoint onEnter={setNavbarBlur} /> */}
                 </Flex>

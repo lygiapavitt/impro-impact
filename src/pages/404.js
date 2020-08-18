@@ -9,14 +9,12 @@ import Navbar from "../components/navbar"
 import SEO from "../components/seo"
 import Title from "../components/title"
 
-const NotFound = () => {
-    const navref = React.createRef()
-    const navbar = <Navbar ref={navref} title={siteTitle} />
+import DefaultLayout from "../components/default_layout"
 
-    const NotFoundPage = () => (
-        <>
-            <SEO title="404: Not found" />
-            {navbar}
+const NotFoundPage = () => (
+    <>
+        <SEO title="404: Not found" />
+        <DefaultLayout>
             <Hero>
                 <Title>404</Title>
 
@@ -29,10 +27,8 @@ const NotFound = () => {
                     <Box>You seem lost...</Box>
                 </Flex>
             </Hero>
-        </>
-    )
+        </DefaultLayout>
+    </>
+)
 
-    return <NotFoundPage />
-}
-
-export default NotFound
+export default NotFoundPage

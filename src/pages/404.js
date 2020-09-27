@@ -9,12 +9,12 @@ import Navbar from "../components/navbar"
 import SEO from "../components/seo"
 import Title from "../components/title"
 
-import DefaultLayout from "../components/default_layout"
+import BaseLayout from "../layouts/base_layout"
 
 const NotFoundPage = () => (
     <>
         <SEO title="404: Not found" />
-        <DefaultLayout>
+        <BaseLayout>
             <Hero>
                 <Title>404</Title>
 
@@ -27,7 +27,7 @@ const NotFoundPage = () => (
                     <Box>You seem lost...</Box>
                 </Flex>
             </Hero>
-        </DefaultLayout>
+        </BaseLayout>
     </>
 )
 

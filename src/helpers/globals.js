@@ -21,3 +21,6 @@ export const lettersSpacingBreakpoints = [
 ]
 
 export const contentTitleFontSizeBreakpoints = [10, 14, 14, 16, 18, 20]
+export const navbarTitleFontSizeBreakpoints = [15, 22, 30, 37, 44, 50]
+
+export const screenWidthItemsPaddingBreakpoints = [10, 20, 40, 60, 80, 100]

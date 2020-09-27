@@ -5,7 +5,7 @@ export default {
         background: "#fcfde8",
         primary: "#73c7d0",
         secondary: "#92e3e9",
-        accent: "#c1f0f9",
+        accent: "#101010",
         muted: "#f6f6f6",
         modes: {
             helvetia: {

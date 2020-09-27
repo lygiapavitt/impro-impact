@@ -10,7 +10,11 @@ import Link from "./custom_link"
 
 import "./layout.css"
 
-import { iconWidthBreakpoints } from "../helpers/globals"
+import {
+    iconWidthBreakpoints,
+    navbarTitleFontSizeBreakpoints,
+    screenWidthItemsPaddingBreakpoints,
+} from "../helpers/globals"
 
 class Navbar extends React.Component {
     constructor(props) {
@@ -93,27 +97,15 @@ class Navbar extends React.Component {
         event.preventDefault()
     }
 
-    renderHelvetiaChapters() {
-        return <Box mx="auto">helvetia chapter</Box>
-    }
-
-    renderGenreChapters() {
-        return <Box mx="auto">genre chapter</Box>
-    }
-
-    renderScienceChapters() {
-        return <Box mx="auto">science chapter</Box>
-    }
-
     render() {
         return (
             <Box
-                width={1}
                 sx={{
                     position: "fixed",
                     zIndex: 9999,
                     borderTop: 0,
                     borderLeft: 0,
+                    width: "100vw",
 
                     mixBlendMode: this.modes[this.state.mode].mixBlendMode,
                 }}
@@ -144,30 +136,69 @@ class Navbar extends React.Component {
                     isOpen={this.state.menuOpen}
                     onStateChange={state => this.handleStateChange(state)}
                 >
-                    <Link to="/helvetia2050/" variant="nav">
-                        Helvetia2050
-                    </Link>
-                    <Box mx="auto" />
+                    <Box>
+                        <Link to="/helvetia2050/" variant="nav">
+                            <Flex
+                                alignItems="center"
+                                justifyContent="spaceEvenly"
+                                fontSize={navbarTitleFontSizeBreakpoints}
+                            >
+                                <Box mx="auto"></Box>
+                                Helvetia2050
+                                <Box mx="auto"></Box>
+                            </Flex>
+                        </Link>
+                    </Box>
                     {this.state.chaptersVisible === this.helvetiaChaptersVisible
                         ? this.renderChapters(this)
                         : ""}
-                    <Link to="/genre/" variant="nav">
-                        Genre
-                    </Link>
+                    <Box>
+                        <Link to="/genre/" variant="nav">
+                            <Flex
+                                alignItems="center"
+                                justifyContent="spaceEvenly"
+                                fontSize={navbarTitleFontSizeBreakpoints}
+                            >
+                                <Box mx="auto"></Box>
+                                Genre
+                                <Box mx="auto"></Box>
+                            </Flex>
+                        </Link>
+                    </Box>
                     {this.state.chaptersVisible === this.genreChaptersVisible
                         ? this.renderChapters(this)
                         : ""}
-                    <Box mx="auto" />
-                    <Link to="/science/" variant="nav">
-                        Sciences en scène
-                    </Link>
+                    <Box>
+                        <Link
+                            to="/science/"
+                            variant="nav"
+                            width={iconWidthBreakpoints}
+                        >
+                            <Flex
+                                alignItems="center"
+                                justifyContent="spaceEvenly"
+                                fontSize={navbarTitleFontSizeBreakpoints}
+                            >
+                                <Box mx="auto"></Box>
+                                Sciences en scène
+                                <Box mx="auto"></Box>
+                            </Flex>
+                        </Link>
+                    </Box>
                     {this.state.chaptersVisible === this.scienceChaptersVisible
                         ? this.renderChapters(this)
                         : ""}
-                    <Box mt="40%">
+                    <Box
+                        mt="20px"
+                        mx="30px"
+                        px={screenWidthItemsPaddingBreakpoints}
+                    >
                         <Flex alignItems="center" justifyContent="spaceEvenly">
                             <Box width={iconWidthBreakpoints} mx="auto">
-                                <RebassLink href="https://www.facebook.com/Helvetia2050-107783550783658/">
+                                <RebassLink
+                                    href="https://www.facebook.com/Helvetia2050-107783550783658/"
+                                    target="_blank"
+                                >
                                     <Img
                                         fluid={
                                             this.props.images.facebook
@@ -177,7 +208,10 @@ class Navbar extends React.Component {
                                 </RebassLink>
                             </Box>
                             <Box width={iconWidthBreakpoints} mx="auto">
-                                <RebassLink href="mailto:impro-impact@pm.me">
+                                <RebassLink
+                                    href="mailto:impro-impact@pm.me"
+                                    target="_blank"
+                                >
                                     <Img
                                         fluid={
                                             this.props.images.mail
@@ -187,7 +221,10 @@ class Navbar extends React.Component {
                                 </RebassLink>
                             </Box>
                             <Box width={iconWidthBreakpoints} mx="auto">
-                                <RebassLink href="https://www.instagram.com/helvetia2050/">
+                                <RebassLink
+                                    href="https://www.instagram.com/helvetia2050/"
+                                    target="_blank"
+                                >
                                     <Img
                                         fluid={
                                             this.props.images.instagram

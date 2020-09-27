@@ -1,8 +1,11 @@
 let content = {
     paragraph1: {
         title: "Le spectacle et les ateliers vous intéressent? Contactez-nous.",
+    },
+    paragraph2: {
+        title: "Qu'est-ce que l'impro ?",
         content:
-            "Impro impact » fait converger la pratique de l’improvisation théâtrale avec vos objectifs de sensibilisation du public. Grâce à l’impro, votre message devient interactif, ludique et mémorable ! Nous proposons une gamme de spectacle sur les thématiques suivantes : la crise écologique (« Helvetia2050 »), l’égalité des genres (« Un genre de spectacle ») et la communication scientifique (« Science&Audience »). Nous proposons également une palette d’ateliers pratiques en lien avec ces thématiques.  Ensemble, nous trouvons des solutions concrètes et sur-mesure pour diffuser ce qui vous tient à cœur.",
+            "L’impro, c’est jouer sur le fil d’une histoire qui se dévoile au fur et à mesure à vos yeux. Sans texte et mise en scène préétablis, les comédien.ne.s s’inspirent d’un cadre imposé et des suggestions du public afin de créer des histoires tantôt drôles, surprenantes, dramatiques, inspirantes... Impro Impact définit un cadre général pour chaque concept (par exemple, la Suisse dans 30 ans pour Helvetia2050) mais chacun de ces spectacles déploie des personnages, des lieux, et des enjeux différents, rendant ainsi chaque situation improvisée, donc unique !",
     },
     damian: {
         title: "Damian Veiga",

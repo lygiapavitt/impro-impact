@@ -1,16 +1,18 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
+import React, { useState, useRef } from "react"
 
-import Title from "./title"
-import TeamMember from "./team_member"
+import Title from "../components/title"
+import TeamMember from "../components/team_member"
+import Link from "../components/custom_link"
+import InfoBanner from "../components/info_banner"
+
 import content from "../pages-content/landing"
 
 import { Hero, ScrollDownIndicator } from "react-landing-page"
 import { Parallax } from "react-scroll-parallax"
 import { Box, Flex, Link as RebassLink } from "rebass"
 import Img from "gatsby-image"
-import Scroll from "react-scroll-to-element"
 import { useColorMode } from "theme-ui"
 
 import { Waypoint } from "react-waypoint"
@@ -37,8 +39,14 @@ const LandingLayout = props => {
     const [colorMode, setColorMode] = useColorMode()
     setColorMode("default")
 
+    const scrollRef = useRef(null)
+    const [scrollToElementArray, setScrollToElementArray] = useState([() => {}])
+
     React.useEffect(() => {
         props.navbar.current.hideAllChapters()
+        setScrollToElementArray([
+            () => window.scrollTo(0, scrollRef.current.offsetTop),
+        ])
     }, [])
 
     return (
@@ -75,7 +83,10 @@ const LandingLayout = props => {
                             width={iconWidthBreakpoints}
                             m={paddingBreakpoints}
                         >
-                            <RebassLink href="https://www.facebook.com/Helvetia2050-107783550783658/">
+                            <RebassLink
+                                href="https://www.facebook.com/Helvetia2050-107783550783658/"
+                                target="_blank"
+                            >
                                 <Img
                                     fluid={
                                         props.images.facebook.childImageSharp
@@ -86,7 +97,10 @@ const LandingLayout = props => {
                         </Box>
                     </Parallax>
                     <Box width={iconWidthBreakpoints} m={paddingBreakpoints}>
-                        <RebassLink href="mailto:impro-impact@pm.me">
+                        <RebassLink
+                            href="mailto:info@impro-impact.ch"
+                            target="_blank"
+                        >
                             <Img
                                 fluid={props.images.mail.childImageSharp.fluid}
                             ></Img>
@@ -97,7 +111,10 @@ const LandingLayout = props => {
                             width={iconWidthBreakpoints}
                             m={paddingBreakpoints}
                         >
-                            <RebassLink href="https://www.instagram.com/helvetia2050/">
+                            <RebassLink
+                                href="https://www.instagram.com/helvetia2050/"
+                                target="_blank"
+                            >
                                 <Img
                                     fluid={
                                         props.images.instagram.childImageSharp
@@ -108,28 +125,75 @@ const LandingLayout = props => {
                         </Box>
                     </Parallax>
                 </Flex>
-                <Scroll type="id" element="content">
-                    <ScrollDownIndicator />
-                </Scroll>
+
+                <ScrollDownIndicator
+                    onClick={() => scrollToElementArray[0]()}
+                />
             </Hero>
 
             <Waypoint onEnter={setNavbarTransparent} />
 
+            <InfoBanner></InfoBanner>
+
+            <Box ref={scrollRef}>
+                <Hero id="content">
+                    <Flex alignItems="center" flexWrap="wrap" width={1}>
+                        <Flex alignItems="center" width={halfWidthBreakpoints}>
+                            <Box
+                                p={paddingBreakpoints}
+                                mx="auto"
+                                my={stackedParallaxedYMargin}
+                            >
+                                <Parallax y={[30, -30]}>
+                                    <Title width={1}>
+                                        {content.paragraph1.title}
+                                    </Title>
+                                </Parallax>
+                            </Box>
+                        </Flex>
+                        <Flex alignItems="center" width={halfWidthBreakpoints}>
+                            <Box
+                                p={paddingBreakpoints}
+                                mx="auto"
+                                width={1}
+                                sx={{ textAlign: "justify" }}
+                            >
+                                <Parallax y={[-30, 30]}>
+                                    « Impro impact » fait converger la pratique
+                                    de l’improvisation théâtrale avec vos
+                                    objectifs de sensibilisation du public.
+                                    Grâce à l’impro, votre message devient
+                                    interactif, ludique et mémorable ! Nous
+                                    proposons une gamme de spectacle sur les
+                                    thématiques suivantes : la crise écologique
+                                    («
+                                    <Link to="/helvetia/" inline>
+                                        Helvetia2050
+                                    </Link>
+                                    »), l’égalité des genres («
+                                    <Link to="/genre/" inline>
+                                        Un genre de spectacle
+                                    </Link>
+                                    ») et la communication scientifique («
+                                    <Link to="/science/" inline>
+                                        Sciences en scène
+                                    </Link>
+                                    »). Nous proposons également une palette
+                                    d’ateliers pratiques en lien avec ces
+                                    thématiques. Ensemble, nous trouvons des
+                                    solutions concrètes et sur-mesure pour
+                                    diffuser ce qui vous tient à cœur.
+                                </Parallax>
+                            </Box>
+                        </Flex>
+                    </Flex>
+                </Hero>
+            </Box>
+
+            <Waypoint onEnter={setNavbarOpaque} />
+
             <Hero id="content">
                 <Flex alignItems="center" flexWrap="wrap" width={1}>
-                    <Flex alignItems="center" width={halfWidthBreakpoints}>
-                        <Box
-                            p={paddingBreakpoints}
-                            mx="auto"
-                            my={stackedParallaxedYMargin}
-                        >
-                            <Parallax y={[30, -30]}>
-                                <Title width={1}>
-                                    {content.paragraph1.title}
-                                </Title>
-                            </Parallax>
-                        </Box>
-                    </Flex>
                     <Flex alignItems="center" width={halfWidthBreakpoints}>
                         <Box
                             p={paddingBreakpoints}
@@ -138,7 +202,20 @@ const LandingLayout = props => {
                             sx={{ textAlign: "justify" }}
                         >
                             <Parallax y={[-30, 30]}>
-                                {content.paragraph1.content}
+                                {content.paragraph2.content}
+                            </Parallax>
+                        </Box>
+                    </Flex>
+                    <Flex alignItems="center" width={halfWidthBreakpoints}>
+                        <Box
+                            p={paddingBreakpoints}
+                            mx="auto"
+                            my={stackedParallaxedYMargin}
+                        >
+                            <Parallax y={[30, -30]}>
+                                <Title width={1}>
+                                    {content.paragraph2.title}
+                                </Title>
                             </Parallax>
                         </Box>
                     </Flex>
@@ -178,8 +255,6 @@ const LandingLayout = props => {
                     {/* <Waypoint onEnter={setNavbarBlur} /> */}
                 </Flex>
             </Hero>
-
-            {/* <Hero></Hero> */}
         </>
     )
 }

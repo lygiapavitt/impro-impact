@@ -1,5 +1,9 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 
+* {
+    outline: none !important;
+}
+
 html {
     scroll-behavior: smooth;
 }

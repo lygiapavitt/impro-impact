@@ -5,7 +5,7 @@ let content = {
             "Nous le savons, le changement climatique et la dégradation des écosystèmes sont parmi les plus grands problèmes sociétaux de notre génération. Pourtant, il est parfois difficile de concevoir concrètement l’impact des décisions que nous prenons aujourd’hui sur le monde de demain. Helvetia2050 est un spectacle qui permet de faire le pont entre le présent et le futur.",
     },
     hero1: {
-        title: "30 ans",
+        title: "Notre solution",
     },
     paragraph2: {
         title: "Chaque spectacle est improvisé, donc unique.",

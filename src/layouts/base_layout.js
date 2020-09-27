@@ -28,7 +28,7 @@ export const iconImage = graphql`
     }
 `
 
-const DefaultLayout = props => {
+const BaseLayout = props => {
     const images = useStaticQuery(graphql`
         query {
             landingImage: file(relativePath: { eq: "401.jpg" }) {
@@ -73,4 +73,4 @@ const DefaultLayout = props => {
     return <DefaultLayoutPage />
 }
 
-export default DefaultLayout
+export default BaseLayout

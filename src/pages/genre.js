@@ -1,13 +1,13 @@
 import React from "react"
 
-import DefaultLayout from "../components/default_layout"
-import GenreLayout from "../components/genre_layout"
+import BaseLayout from "../layouts/base_layout"
+import GenreLayout from "../layouts/genre_layout"
 import PropTypes from "prop-types"
 
 const Index = () => (
-    <DefaultLayout>
+    <BaseLayout>
         <GenreLayout />
-    </DefaultLayout>
+    </BaseLayout>
 )
 
 Index.propTypes = {

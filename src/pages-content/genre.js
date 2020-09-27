@@ -8,7 +8,7 @@ let content = {
             "L’inégalité des genres et le sexisme sont aujourd’hui encore des problèmes de société. Ceux-ci peuvent prendre plusieurs formes, certaines plus évidentes et visibles que d’autres. Que ce soit au travail, dans les médias, à l’école ou même chez soi, il est important d’être conscient.e.s des actes sexistes, car mêmes s’ils peuvent parfois paraître négligeables, ils ont toujours des effets délétères.",
     },
     hero1: {
-        title: "Déconstruire",
+        title: "Notre solution",
     },
     paragraph2: {
         title: "Chaque spectacle est improvisé, donc unique.",

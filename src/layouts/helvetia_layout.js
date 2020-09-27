@@ -1,18 +1,19 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
+import React, { useState, useRef } from "react"
 
 import { useStaticQuery, graphql } from "gatsby"
 
 import Title from "../components/title"
 import content from "../pages-content/helvetia"
-import Link from "./custom_link"
-import TeamMember from "./team_member"
+import Link from "../components/custom_link"
+import TeamMember from "../components/team_member"
+import InfoBanner from "../components/info_banner"
+import SponsorBanner from "../components/sponsor_banner"
 
 import { Hero, ScrollDownIndicator } from "react-landing-page"
 import { Parallax } from "react-scroll-parallax"
 import { Box, Flex, Text } from "rebass"
-import Scroll from "react-scroll-to-element"
 import { useColorMode } from "theme-ui"
 import Img from "gatsby-image"
 import { Waypoint } from "react-waypoint"
@@ -21,14 +22,7 @@ import WordCloud from "react-d3-cloud"
 
 import ImageGallery from "react-image-gallery"
 
-import {
-    halfWidthBreakpoints,
-    stackedParallaxedYMargin,
-    paddingBreakpoints,
-    iconWidthBreakpoints,
-    lettersSpacingBreakpoints,
-    contentTitleFontSizeBreakpoints,
-} from "../helpers/globals"
+import { contentTitleFontSizeBreakpoints } from "../helpers/globals"
 
 export const defaultImage = graphql`
     fragment defaultImage on File {
@@ -46,7 +40,13 @@ const HelvetiaLayout = props => {
             landingImage: file(relativePath: { eq: "26.jpg" }) {
                 ...defaultImage
             }
-            middleImage: file(relativePath: { eq: "404.jpg" }) {
+            middleImage: file(relativePath: { eq: "9.jpg" }) {
+                ...defaultImage
+            }
+            logoUnige: file(relativePath: { eq: "unige_logo.png" }) {
+                ...defaultImage
+            }
+            logoAcademie: file(relativePath: { eq: "academie_logo.png" }) {
                 ...defaultImage
             }
         }
@@ -74,73 +74,115 @@ const HelvetiaLayout = props => {
     const setNavbarTransparent = () => {
         props.navbar.current.setTransparent()
     }
-    const setNavbarBlur = () => {
-        props.navbar.current.setBlur()
-    }
     const setNavbarOpaque = () => {
         props.navbar.current.setOpaque()
     }
+
+    const contentRef = useRef(null)
+    const descriptionRef = useRef(null)
+    const solutionsRef = useRef(null)
+    const equipeRef = useRef(null)
+    const photosRef = useRef(null)
+    const retoursRef = useRef(null)
+    const [scrollToElementArray, setScrollToElementArray] = useState([() => {}])
 
     const Chapters = navbar => (
         <Flex>
             <Box mx="auto" width={1 / 3}></Box>
             <Box mx="auto" width={2 / 3}>
-                <Scroll type="id" element="content">
-                    <Link variant="nav">
-                        <Text onClick={navbar.closeMenu}>Problème</Text>
-                    </Link>
-                </Scroll>
+                <Link variant="nav" to="/helvetia2050">
+                    <Text
+                        onClick={() => {
+                            scrollToElementArray[0](contentRef)
+                            navbar.closeMenu()
+                        }}
+                    >
+                        Problème
+                    </Text>
+                </Link>
             </Box>
 
             <Box mx="auto" width={1 / 3}></Box>
             <Box mx="auto" width={2 / 3}>
-                <Scroll type="id" element="description">
-                    <Link variant="nav">
-                        <Text onClick={navbar.closeMenu}>Description</Text>
-                    </Link>
-                </Scroll>
+                <Link variant="nav">
+                    <Text
+                        onClick={() => {
+                            navbar.closeMenu()
+                            scrollToElementArray[0](descriptionRef)
+                        }}
+                    >
+                        Description
+                    </Text>
+                </Link>
             </Box>
 
             <Box mx="auto" width={1 / 3}></Box>
             <Box mx="auto" width={2 / 3}>
-                <Scroll type="id" element="solutions">
-                    <Link variant="nav">
-                        <Text onClick={navbar.closeMenu}>Solutions</Text>
-                    </Link>
-                </Scroll>
+                <Link variant="nav">
+                    <Text
+                        onClick={() => {
+                            navbar.closeMenu()
+                            scrollToElementArray[0](solutionsRef)
+                        }}
+                    >
+                        Solutions
+                    </Text>
+                </Link>
             </Box>
 
             <Box mx="auto" width={1 / 3}></Box>
             <Box mx="auto" width={2 / 3}>
-                <Scroll type="id" element="equipe">
-                    <Link variant="nav">
-                        <Text onClick={navbar.closeMenu}>Equipe</Text>
-                    </Link>
-                </Scroll>
+                <Link variant="nav">
+                    <Text
+                        onClick={() => {
+                            navbar.closeMenu()
+                            scrollToElementArray[0](equipeRef)
+                        }}
+                    >
+                        Equipe
+                    </Text>
+                </Link>
             </Box>
 
             <Box mx="auto" width={1 / 3}></Box>
             <Box mx="auto" width={2 / 3}>
-                <Scroll type="id" element="photos">
-                    <Link variant="nav">
-                        <Text onClick={navbar.closeMenu}>Photos</Text>
-                    </Link>
-                </Scroll>
+                <Link variant="nav">
+                    <Text
+                        onClick={() => {
+                            navbar.closeMenu()
+                            scrollToElementArray[0](photosRef)
+                        }}
+                    >
+                        Photos
+                    </Text>
+                </Link>
             </Box>
 
             <Box mx="auto" width={1 / 3}></Box>
             <Box mx="auto" width={2 / 3}>
-                <Scroll type="id" element="retours">
-                    <Link variant="nav">
-                        <Text onClick={navbar.closeMenu}>Retours</Text>
-                    </Link>
-                </Scroll>
+                <Link variant="nav">
+                    <Text
+                        onClick={() => {
+                            navbar.closeMenu()
+                            scrollToElementArray[0](retoursRef)
+                        }}
+                    >
+                        Retours
+                    </Text>
+                </Link>
             </Box>
         </Flex>
     )
 
     React.useEffect(() => {
-        props.navbar.current.setHelvetiaChaptersVisible(Chapters)
+        // console.log("jambon")
+        // setScrollToElementArray([
+        //     scrollRef => window.scrollTo(0, scrollRef.current.offsetTop),
+        // ])
+        // props.navbar.current.setHelvetiaChaptersVisible(Chapters)
+        setScrollToElementArray([
+            () => window.scrollTo(0, contentRef.current.offsetTop),
+        ])
     }, [])
 
     const [colorMode, setColorMode] = useColorMode()
@@ -166,6 +208,7 @@ const HelvetiaLayout = props => {
                         animationTimingFunction: "ease-in-out",
                         animationDirection: "alternate",
                         animationIterationCount: "infinite",
+                        fontWeight: "400",
                     }}
                 >
                     {props.children}
@@ -261,42 +304,48 @@ const HelvetiaLayout = props => {
                         0
                     </TitleLetter>
                 </Flex>
-                <Scroll type="id" element="content">
-                    <ScrollDownIndicator />
-                </Scroll>
+                <ScrollDownIndicator
+                    onClick={() => {
+                        scrollToElementArray[0](contentRef)
+                    }}
+                />
             </Hero>
 
             <Waypoint onEnter={setNavbarTransparent} />
 
-            <Hero id="content">
-                <Flex alignItems="center" flexWrap="wrap" width={1}>
-                    <Flex alignItems="center" width={halfWidthBreakpoints}>
-                        <Box
-                            p={paddingBreakpoints}
-                            mx="auto"
-                            my={stackedParallaxedYMargin}
-                        >
-                            <Parallax y={[30, -30]}>
-                                <Title width={1}>
-                                    {content.paragraph1.title}
-                                </Title>
-                            </Parallax>
-                        </Box>
+            <InfoBanner></InfoBanner>
+
+            <Box ref={contentRef}>
+                <Hero id="content">
+                    <Flex alignItems="center" flexWrap="wrap" width={1}>
+                        <Flex alignItems="center" width={halfWidthBreakpoints}>
+                            <Box
+                                p={paddingBreakpoints}
+                                mx="auto"
+                                my={stackedParallaxedYMargin}
+                            >
+                                <Parallax y={[30, -30]}>
+                                    <Title width={1}>
+                                        {content.paragraph1.title}
+                                    </Title>
+                                </Parallax>
+                            </Box>
+                        </Flex>
+                        <Flex alignItems="center" width={halfWidthBreakpoints}>
+                            <Box
+                                p={paddingBreakpoints}
+                                mx="auto"
+                                width={1}
+                                sx={{ textAlign: "justify" }}
+                            >
+                                <Parallax y={[-30, 30]}>
+                                    {content.paragraph1.content}
+                                </Parallax>
+                            </Box>
+                        </Flex>
                     </Flex>
-                    <Flex alignItems="center" width={halfWidthBreakpoints}>
-                        <Box
-                            p={paddingBreakpoints}
-                            mx="auto"
-                            width={1}
-                            sx={{ textAlign: "justify" }}
-                        >
-                            <Parallax y={[-30, 30]}>
-                                {content.paragraph1.content}
-                            </Parallax>
-                        </Box>
-                    </Flex>
-                </Flex>
-            </Hero>
+                </Hero>
+            </Box>
 
             <Waypoint onEnter={setNavbarOpaque} />
 
@@ -317,42 +366,49 @@ const HelvetiaLayout = props => {
 
             <Waypoint onEnter={setNavbarTransparent} />
 
-            <Hero id="description">
-                <Flex alignItems="center" flexWrap="wrap" width={1}>
-                    <Flex alignItems="center" width={halfWidthBreakpoints}>
-                        <Box
-                            p={paddingBreakpoints}
-                            mx="auto"
-                            width={1}
-                            sx={{ textAlign: "justify" }}
-                        >
-                            <Parallax y={[-30, 30]}>
-                                {content.paragraph2.content}
-                            </Parallax>
-                        </Box>
+            <Box ref={descriptionRef}>
+                <Hero id="description">
+                    <Flex alignItems="center" flexWrap="wrap" width={1}>
+                        <Flex alignItems="center" width={halfWidthBreakpoints}>
+                            <Box
+                                p={paddingBreakpoints}
+                                mx="auto"
+                                width={1}
+                                sx={{ textAlign: "justify" }}
+                            >
+                                <Parallax y={[-30, 30]}>
+                                    {content.paragraph2.content}
+                                </Parallax>
+                            </Box>
+                        </Flex>
+                        <Flex alignItems="center" width={halfWidthBreakpoints}>
+                            <Box
+                                p={paddingBreakpoints}
+                                mx="auto"
+                                my={stackedParallaxedYMargin}
+                                sx={{
+                                    fontSize: contentTitleFontSizeBreakpoints,
+                                }}
+                            >
+                                <Parallax y={[30, -30]}>
+                                    <Title width={1}>
+                                        {content.paragraph2.title}
+                                    </Title>
+                                </Parallax>
+                            </Box>
+                        </Flex>
                     </Flex>
-                    <Flex alignItems="center" width={halfWidthBreakpoints}>
-                        <Box
-                            p={paddingBreakpoints}
-                            mx="auto"
-                            my={stackedParallaxedYMargin}
-                            sx={{
-                                fontSize: contentTitleFontSizeBreakpoints,
-                            }}
-                        >
-                            <Parallax y={[30, -30]}>
-                                <Title width={1}>
-                                    {content.paragraph2.title}
-                                </Title>
-                            </Parallax>
-                        </Box>
-                    </Flex>
-                </Flex>
-            </Hero>
+                </Hero>
+            </Box>
 
             <Waypoint onEnter={setNavbarOpaque} />
 
-            <Hero
+            <SponsorBanner
+                sponsorLogo1={data.logoUnige}
+                sponsorLogo2={data.logoAcademie}
+            />
+
+            {/* <Hero
                 bg="rgba(255, 255, 255, 0.5)"
                 backgroundImage={data.middleImage.childImageSharp.fluid.src}
             >
@@ -365,11 +421,13 @@ const HelvetiaLayout = props => {
                 >
                     Vos solutions
                 </Title>
-            </Hero>
+            </Hero> */}
 
-            <Hero id="solutions">
-                <ImageGallery items={images} />
-            </Hero>
+            {/* <Box ref={solutionsRef}>
+                <Hero id="solutions">
+                    <ImageGallery items={images} />
+                </Hero>
+            </Box>
 
             <Hero
                 bg="rgba(255, 255, 255, 0.5)"
@@ -384,41 +442,42 @@ const HelvetiaLayout = props => {
                 >
                     Equipe
                 </Title>
-            </Hero>
+            </Hero> */}
 
-            <Hero id="equipe" sx={{ bg: "background" }}>
-                <Flex alignItems="center" flexWrap="wrap" width={1}>
-                    <TeamMember
-                        name="Damian Veiga"
-                        avatar={
-                            props.images.damianVeiga.childImageSharp.fluid.src
-                        }
-                        // content={content.damian.content}
-                        content=""
-                    />
-                    {/* <Waypoint onEnter={setNavbarBlur} /> */}
-                    <TeamMember
-                        name="Lygia Pavitt"
-                        avatar={
-                            props.images.lygiaPavitt.childImageSharp.fluid.src
-                        }
-                        // content={content.lygia.content}
-                        content=""
-                    />
-                    {/* <Waypoint onEnter={setNavbarBlur} /> */}
-                    <TeamMember
-                        name="Léo Moreno"
-                        avatar={
-                            props.images.leoMoreno.childImageSharp.fluid.src
-                        }
-                        // content={content.leo.content}
-                        content=""
-                    />
-                    {/* <Waypoint onEnter={setNavbarBlur} /> */}
-                </Flex>
-            </Hero>
+            {/* <Box ref={equipeRef}>
+                <Hero id="equipe" sx={{ bg: "background" }}>
+                    <Flex alignItems="center" flexWrap="wrap" width={1}>
+                        <TeamMember
+                            name="Damian Veiga"
+                            avatar={
+                                props.images.damianVeiga.childImageSharp.fluid
+                                    .src
+                            }
+                            // content={content.damian.content}
+                            content=""
+                        />
+                        <TeamMember
+                            name="Lygia Pavitt"
+                            avatar={
+                                props.images.lygiaPavitt.childImageSharp.fluid
+                                    .src
+                            }
+                            // content={content.lygia.content}
+                            content=""
+                        />
+                        <TeamMember
+                            name="Léo Moreno"
+                            avatar={
+                                props.images.leoMoreno.childImageSharp.fluid.src
+                            }
+                            // content={content.leo.content}
+                            content=""
+                        />
+                    </Flex>
+                </Hero>
+            </Box> */}
 
-            <Hero
+            {/* <Hero
                 bg="rgba(255, 255, 255, 0.5)"
                 backgroundImage={data.middleImage.childImageSharp.fluid.src}
             >
@@ -433,9 +492,11 @@ const HelvetiaLayout = props => {
                 </Title>
             </Hero>
 
-            <Hero id="photos">
-                <ImageGallery items={images} />
-            </Hero>
+            <Box ref={photosRef}>
+                <Hero id="photos">
+                    <ImageGallery items={images} />
+                </Hero>
+            </Box>
 
             <Hero
                 bg="rgba(255, 255, 255, 0.6)"
@@ -452,15 +513,17 @@ const HelvetiaLayout = props => {
                 </Title>
             </Hero>
 
-            <Hero id="retours" bg="rgba(255, 255, 255, 0.6)">
-                <WordCloud
-                    data={wordCloudData}
-                    fontSizeMapper={fontSizeMapper}
-                    padding={paddingMapper}
-                    font="Montserrat, sans-serif"
-                    rotate={rotation}
-                />
-            </Hero>
+            <Box ref={retoursRef}>
+                <Hero id="retours" bg="rgba(255, 255, 255, 0.6)">
+                    <WordCloud
+                        data={wordCloudData}
+                        fontSizeMapper={fontSizeMapper}
+                        padding={paddingMapper}
+                        font="Montserrat, sans-serif"
+                        rotate={rotation}
+                    />
+                </Hero>
+            </Box> */}
         </>
     )
 }

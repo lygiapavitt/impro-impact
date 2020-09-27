@@ -1,14 +1,15 @@
 module.exports = {
     siteMetadata: {
         title: `Impro Impact`,
-        description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-        author: `@gatsbyjs`,
+        description: `« Impro impact » fait converger la pratique de l’improvisation théâtrale avec vos objectifs de sensibilisation du public. Grâce à l’impro, votre message devient interactif, ludique et mémorable !`,
+        author: `@EpicMinimata`,
     },
     plugins: [
         "gatsby-plugin-theme-ui",
         `gatsby-plugin-react-helmet`,
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
+        `gatsby-plugin-styled-components`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {

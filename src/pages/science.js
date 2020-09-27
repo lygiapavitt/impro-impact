@@ -1,13 +1,13 @@
 import React from "react"
 
-import DefaultLayout from "../components/default_layout"
-import ScienceLayout from "../components/science_layout"
+import BaseLayout from "../layouts/base_layout"
+import ScienceLayout from "../layouts/science_layout"
 import PropTypes from "prop-types"
 
 const Index = () => (
-    <DefaultLayout>
+    <BaseLayout>
         <ScienceLayout />
-    </DefaultLayout>
+    </BaseLayout>
 )
 
 Index.propTypes = {

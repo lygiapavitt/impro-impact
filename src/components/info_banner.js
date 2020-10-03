@@ -22,9 +22,14 @@ const InfoBanner = () => (
         p="40px"
         sx={{ color: "background", bg: "accent", textAlign: "center" }}
     >
-        <Box p={paddingBreakpoints} width={halfWidthBreakpoints}>
-            <Title>Prochaines représentations</Title>
-        </Box>
+        <Flex width={halfWidthBreakpoints} flexWrap="wrap" alignItems="center">
+            <Box p={paddingBreakpoints} width={1}>
+                <Title>Prochaines représentations</Title>
+            </Box>
+            <Box p={paddingBreakpoints} width={1}>
+                <Title>{content.spectacle}</Title>
+            </Box>
+        </Flex>
         <Flex width={halfWidthBreakpoints} flexWrap="wrap">
             <Box p={paddingBreakpoints} width={1}>
                 <Text>{content.date}</Text>

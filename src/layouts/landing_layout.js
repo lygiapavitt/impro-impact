@@ -167,7 +167,7 @@ const LandingLayout = props => {
                                     proposons une gamme de spectacle sur les
                                     thématiques suivantes : la crise écologique
                                     («
-                                    <Link to="/helvetia/" inline>
+                                    <Link to="/helvetia2050/" inline>
                                         Helvetia2050
                                     </Link>
                                     »), l’égalité des genres («
@@ -193,7 +193,7 @@ const LandingLayout = props => {
             <Waypoint onEnter={setNavbarOpaque} />
 
             <Hero id="content">
-                <Flex alignItems="center" flexWrap="wrap" width={1}>
+                <Flex alignItems="center" flexWrap="wrap-reverse" width={1}>
                     <Flex alignItems="center" width={halfWidthBreakpoints}>
                         <Box
                             p={paddingBreakpoints}

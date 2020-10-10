@@ -12,21 +12,10 @@ import { Parallax } from "react-scroll-parallax"
 class TeamMember extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            open: false,
-        }
-    }
-
-    onOpenModal = () => {
-        this.setState({ open: true })
-    }
-
-    onCloseModal = () => {
-        this.setState({ open: false })
+        this.modalRef = React.createRef()
     }
 
     render() {
-        const { open } = this.state
         return (
             <>
                 <Flex
@@ -51,7 +40,9 @@ class TeamMember extends React.Component {
                                 zIndex: 999,
                             },
                         }}
-                        onClick={this.onOpenModal}
+                        onClick={() => {
+                            this.modalRef.current.open()
+                        }}
                     >
                         <Box
                             pt={5}
@@ -108,11 +99,11 @@ class TeamMember extends React.Component {
                         </Box>
                     </Box>
                 </Flex>
-                {/* <TeamMemberModal
-                    open={open}
-                    onClose={this.onCloseModal}
+                <TeamMemberModal
+                    ref={this.modalRef}
+                    open={false}
                     title={this.props.name}
-                ></TeamMemberModal> */}
+                ></TeamMemberModal>
             </>
         )
     }

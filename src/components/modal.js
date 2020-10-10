@@ -12,10 +12,20 @@ import { Hero } from "react-landing-page"
 class Modal extends React.Component {
     constructor(props) {
         super(props)
+
+        this.onOpen = props.onOpen ? props.onOpen : () => {}
+        this.onClose = props.onClose ? props.onClose : () => {}
         this.state = {
             open: props.open,
-            onClose: props.onClose,
         }
+    }
+    open = () => {
+        this.setState({ open: true })
+        this.onOpen()
+    }
+    close = () => {
+        this.setState({ open: false })
+        this.onClose()
     }
     render() {
         return (
@@ -28,12 +38,12 @@ class Modal extends React.Component {
                     zIndex: "99998",
                     top: "0",
                     left: "0",
-                    display: this.state.open ? "box" : "none",
+                    display: this.state.open ? "block" : "none",
                 }}
             >
                 <Button
                     m="10px"
-                    onClick={this.props.onClose}
+                    onClick={this.close}
                     sx={{
                         position: "fixed",
                         zIndex: "99999",
@@ -52,13 +62,18 @@ class Modal extends React.Component {
 export class TeamMemberModal extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            open: props.open,
-        }
+
+        this.modalRef = React.createRef()
+    }
+    open() {
+        this.modalRef.current.open()
+    }
+    close() {
+        this.modalRef.current.close()
     }
     render() {
         return (
-            <Modal open={this.props.open}>
+            <Modal ref={this.modalRef} {...this.props}>
                 <Hero>
                     <Title
                         sx={{

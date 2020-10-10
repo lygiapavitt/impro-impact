@@ -23,18 +23,18 @@ const InfoBanner = () => (
         sx={{ color: "background", bg: "accent", textAlign: "center" }}
     >
         <Flex width={halfWidthBreakpoints} flexWrap="wrap" alignItems="center">
-            <Box p={paddingBreakpoints} width={1}>
-                <Title>Prochaines représentations</Title>
+            <Box px={paddingBreakpoints} width={1}>
+                <Title my="0">Prochaines représentations</Title>
             </Box>
-            <Box p={paddingBreakpoints} width={1}>
-                <Title>{content.spectacle}</Title>
+            <Box px={paddingBreakpoints} width={1}>
+                <Title my="0">{content.spectacle}</Title>
             </Box>
         </Flex>
         <Flex width={halfWidthBreakpoints} flexWrap="wrap">
-            <Box p={paddingBreakpoints} width={1}>
+            <Box px={paddingBreakpoints} width={1}>
                 <Text>{content.date}</Text>
             </Box>
-            <Box p={paddingBreakpoints} width={1}>
+            <Box px={paddingBreakpoints} width={1}>
                 <Text>{content.place}</Text>
             </Box>
         </Flex>

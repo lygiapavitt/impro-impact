@@ -13,7 +13,7 @@ def run_git_command(command, add_info=None):
     if result.stdout:
         print(result.stdout)
     if result.stderr:
-        raise ValueError("Error: {}".format(result.stderr))
+        print("Error: {}".format(result.stderr))
 
 def sync():
     # repo = pygit.load("ImproImpact")
@@ -32,6 +32,15 @@ def sync():
 
 
 def deploy():
+    is_input_valid = False
+    while not is_input_valid:
+        print("Do you wish to deploy the website to production ? [y/n]")
+        answer = input()
+        if answer == "n":
+            return
+        if answer == "y":
+            is_input_valid = True
+    
     print("deploy")
     return
     with pysftp.Connection('hostname', username='me', password='secret') as sftp:

@@ -37,16 +37,85 @@ export const defaultImage = graphql`
 const HelvetiaLayout = props => {
     const data = useStaticQuery(graphql`
         query {
-            landingImage: file(relativePath: { eq: "26.jpg" }) {
+            landingImage: file(
+                relativePath: { eq: "helvetia2050/backgrounds/26.jpg" }
+            ) {
                 ...defaultImage
             }
-            middleImage: file(relativePath: { eq: "9.jpg" }) {
+            middleImage: file(
+                relativePath: { eq: "helvetia2050/backgrounds/9.jpg" }
+            ) {
                 ...defaultImage
             }
-            logoUnige: file(relativePath: { eq: "unige_logo.png" }) {
+            teamImage: file(
+                relativePath: { eq: "helvetia2050/backgrounds/16.jpg" }
+            ) {
                 ...defaultImage
             }
-            logoAcademie: file(relativePath: { eq: "academie_logo.png" }) {
+            logoUnige: file(
+                relativePath: { eq: "helvetia2050/sponsors/unige_logo.png" }
+            ) {
+                ...defaultImage
+            }
+            logoAcademie: file(
+                relativePath: { eq: "helvetia2050/sponsors/academie_logo.png" }
+            ) {
+                ...defaultImage
+            }
+
+            anouckMuller: file(
+                relativePath: { eq: "helvetia2050/people/anouckMuller.JPG" }
+            ) {
+                ...defaultImage
+            }
+            aureliaPlaton: file(
+                relativePath: { eq: "helvetia2050/people/aureliaPlaton.JPG" }
+            ) {
+                ...defaultImage
+            }
+            cecileJeannet: file(
+                relativePath: { eq: "helvetia2050/people/cecileJeannet.JPG" }
+            ) {
+                ...defaultImage
+            }
+            damianVeiga: file(
+                relativePath: { eq: "helvetia2050/people/damianVeiga.JPG" }
+            ) {
+                ...defaultImage
+            }
+            deborahChirenti: file(
+                relativePath: { eq: "helvetia2050/people/deborahChirenti.JPG" }
+            ) {
+                ...defaultImage
+            }
+            filipeFonseca: file(
+                relativePath: { eq: "helvetia2050/people/filipeFonseca.JPG" }
+            ) {
+                ...defaultImage
+            }
+            jeromePache: file(
+                relativePath: { eq: "helvetia2050/people/jeromePache.JPG" }
+            ) {
+                ...defaultImage
+            }
+            leoMoreno: file(
+                relativePath: { eq: "helvetia2050/people/leoMoreno.JPG" }
+            ) {
+                ...defaultImage
+            }
+            lygiaPavitt: file(
+                relativePath: { eq: "helvetia2050/people/lygiaPavitt.JPG" }
+            ) {
+                ...defaultImage
+            }
+            sarahRusalen: file(
+                relativePath: { eq: "helvetia2050/people/sarahRusalen.JPG" }
+            ) {
+                ...defaultImage
+            }
+            thomasDemaurex: file(
+                relativePath: { eq: "helvetia2050/people/thomasDemaurex.JPG" }
+            ) {
                 ...defaultImage
             }
         }
@@ -190,7 +259,7 @@ const HelvetiaLayout = props => {
 
     const TitleLetter = props => (
         <Parallax y={props.parallax}>
-            <Box width={iconWidthBreakpoints} m={paddingBreakpoints}>
+            <Box width={iconWidthBreakpoints}>
                 <Title
                     {...props}
                     css={{
@@ -208,7 +277,8 @@ const HelvetiaLayout = props => {
                         animationTimingFunction: "ease-in-out",
                         animationDirection: "alternate",
                         animationIterationCount: "infinite",
-                        fontWeight: "400",
+                        // fontWeight: "500",
+                        fontSize: "2em",
                     }}
                 >
                     {props.children}
@@ -271,33 +341,33 @@ const HelvetiaLayout = props => {
 
                 <Flex
                     alignItems="center"
-                    justifyContent="center"
+                    justifyContent="space-between"
                     flexWrap="wrap"
-                    width={0.5}
+                    width={0.4}
                 >
                     <TitleLetter
-                        parallax={[0, 15]}
+                        parallax={[0, 50]}
                         rotate={[-7, 7]}
                         duration={6}
                     >
                         2
                     </TitleLetter>
                     <TitleLetter
-                        parallax={[0, 33]}
+                        parallax={[-150, 150]}
                         rotate={[-7, 7]}
                         duration={4}
                     >
                         0
                     </TitleLetter>
                     <TitleLetter
-                        parallax={[0, 51]}
+                        parallax={[-50, 125]}
                         rotate={[-7, 7]}
                         duration={7}
                     >
                         5
                     </TitleLetter>
                     <TitleLetter
-                        parallax={[0, 81]}
+                        parallax={[-200, 250]}
                         rotate={[-7, 7]}
                         duration={5}
                     >
@@ -403,11 +473,6 @@ const HelvetiaLayout = props => {
 
             <Waypoint onEnter={setNavbarOpaque} />
 
-            <SponsorBanner
-                sponsorLogo1={data.logoUnige}
-                sponsorLogo2={data.logoAcademie}
-            />
-
             {/* <Hero
                 bg="rgba(255, 255, 255, 0.5)"
                 backgroundImage={data.middleImage.childImageSharp.fluid.src}
@@ -427,11 +492,11 @@ const HelvetiaLayout = props => {
                 <Hero id="solutions">
                     <ImageGallery items={images} />
                 </Hero>
-            </Box>
+            </Box> */}
 
             <Hero
                 bg="rgba(255, 255, 255, 0.5)"
-                backgroundImage={data.middleImage.childImageSharp.fluid.src}
+                backgroundImage={data.teamImage.childImageSharp.fluid.src}
             >
                 <Title
                     sx={{
@@ -442,40 +507,89 @@ const HelvetiaLayout = props => {
                 >
                     Equipe
                 </Title>
-            </Hero> */}
+            </Hero>
 
-            {/* <Box ref={equipeRef}>
-                <Hero id="equipe" sx={{ bg: "background" }}>
+            <Box ref={equipeRef}>
+                <Hero sx={{ bg: "background" }}>
                     <Flex alignItems="center" flexWrap="wrap" width={1}>
                         <TeamMember
-                            name="Damian Veiga"
-                            avatar={
-                                props.images.damianVeiga.childImageSharp.fluid
-                                    .src
-                            }
-                            // content={content.damian.content}
-                            content=""
+                            name={content.people.jeromePache.title}
+                            avatar={data.jeromePache.childImageSharp.fluid.src}
+                            content={content.people.jeromePache.content}
                         />
                         <TeamMember
-                            name="Lygia Pavitt"
+                            name={content.people.deborahChirenti.title}
                             avatar={
-                                props.images.lygiaPavitt.childImageSharp.fluid
-                                    .src
+                                data.deborahChirenti.childImageSharp.fluid.src
                             }
-                            // content={content.lygia.content}
-                            content=""
+                            content={content.people.deborahChirenti.content}
                         />
                         <TeamMember
-                            name="Léo Moreno"
-                            avatar={
-                                props.images.leoMoreno.childImageSharp.fluid.src
-                            }
-                            // content={content.leo.content}
-                            content=""
+                            name={content.people.sarahRusalen.title}
+                            avatar={data.sarahRusalen.childImageSharp.fluid.src}
+                            content={content.people.sarahRusalen.content}
+                        />
+                    </Flex>
+                    <Flex alignItems="center" flexWrap="wrap" width={1}>
+                        <TeamMember
+                            name={content.people.anouckMuller.title}
+                            avatar={data.anouckMuller.childImageSharp.fluid.src}
+                            content={content.people.anouckMuller.content}
+                        />
+                        <TeamMember
+                            name={content.people.leoMoreno.title}
+                            avatar={data.leoMoreno.childImageSharp.fluid.src}
+                            content={content.people.leoMoreno.content}
+                        />
+                        <TeamMember
+                            name={content.people.lygiaPavitt.title}
+                            avatar={data.lygiaPavitt.childImageSharp.fluid.src}
+                            content={content.people.lygiaPavitt.content}
                         />
                     </Flex>
                 </Hero>
-            </Box> */}
+                <Hero sx={{ bg: "background" }}>
+                    <Flex alignItems="center" flexWrap="wrap" width={1}>
+                        <TeamMember
+                            name={content.people.damianVeiga.title}
+                            avatar={data.damianVeiga.childImageSharp.fluid.src}
+                            content={content.people.damianVeiga.content}
+                        />
+                        <TeamMember
+                            name={content.people.aureliaPlaton.title}
+                            avatar={
+                                data.aureliaPlaton.childImageSharp.fluid.src
+                            }
+                            content={content.people.aureliaPlaton.content}
+                        />
+                        <TeamMember
+                            name={content.people.cecileJeannet.title}
+                            avatar={
+                                data.cecileJeannet.childImageSharp.fluid.src
+                            }
+                            content={content.people.cecileJeannet.content}
+                        />
+                    </Flex>
+                    <Flex alignItems="center" flexWrap="wrap" width={1}>
+                        <TeamMember
+                            name={content.people.thomasDemaurex.title}
+                            avatar={
+                                data.thomasDemaurex.childImageSharp.fluid.src
+                            }
+                            content={content.people.thomasDemaurex.content}
+                            numberOfPeople={2}
+                        />
+                        <TeamMember
+                            name={content.people.filipeFonseca.title}
+                            avatar={
+                                data.filipeFonseca.childImageSharp.fluid.src
+                            }
+                            content={content.people.filipeFonseca.content}
+                            numberOfPeople={2}
+                        />
+                    </Flex>
+                </Hero>
+            </Box>
 
             {/* <Hero
                 bg="rgba(255, 255, 255, 0.5)"
@@ -524,6 +638,11 @@ const HelvetiaLayout = props => {
                     />
                 </Hero>
             </Box> */}
+
+            <SponsorBanner
+                sponsorLogo1={data.logoUnige}
+                sponsorLogo2={data.logoAcademie}
+            />
         </>
     )
 }

@@ -10,17 +10,17 @@ let content = {
     damian: {
         title: "Damian Veiga",
         content:
-            "Looking down into the dark gulf below, I could see a ruddy light streaming through a rift in the clouds.",
+            "Damian Veiga est récemment diplômé d’un Master en Science Environnementales et pratique l’improvisation depuis 10 ans entre Genève et Neuchâtel. Il a exercé dans une dizaine de troupes différentes, participé à de nombreux festivals internationaux et joué dans plus de deux cents spectacles. Aujourd’hui, Damian exerce en tant que formateur, arbitre et maître de cérémonie. Pour son travail de Master sur les sciences participatives, il a  agné le premier prix de présentation à la conférence 2019 de l’Euroleague for Life Science, en Suède. Sa formation lui permet de fonder le storytelling sur de nécessaires bases scientifiques.",
     },
     lygia: {
         title: "Lygia Pavitt",
         content:
-            "Looking down into the dark gulf below, I could see a ruddy light streaming through a rift in the clouds.",
+            "Lygia Pavitt est étudiante en 2ème année de Master de Psychologie à l’UNIGE. Elle pratique l’improvisation théâtrale depuis 8 ans. Elle est formatrice à la Ligue d’Improvisation Théâtrale de l’UNIGE (aux activités culturelles de l’UNIGE) et à la Fédération d’Improvisation Genevoise depuis trois ans. Sa formation en Psychologie lui permet d’apporter un regard scientifique sur l’impact d’une intervention sur des individus, afin d’optimiser l’aspect pédagogique des projets.",
     },
     leo: {
         title: "Léo Moreno",
         content:
-            "Looking down into the dark gulf below, I could see a ruddy light streaming through a rift in the clouds.",
+            "Léo Moreno est étudiant en Master de Sciences Sociales à l’UNIL. Il pratique l’improvisation théâtrale depuis bientôt 15 ans. Originaire de Neuchâtel, il y a joué tous les rôles dans des centaines de spectacles de formats divers, a créé plusieurs troupes et concepts de jeu et entraîne aujourd’hui 5 équipes de différents âges et niveaux chaque semaine. Léo est notamment formateur à Impro Suisse et à la Ligue d’Impro Neuchâteloise. Sa formation en Sciences Sociales lui permet d’ancrer un dispositif narratif dans une réflexion sociétale globale.",
     },
 }
 

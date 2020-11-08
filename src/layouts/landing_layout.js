@@ -231,8 +231,7 @@ const LandingLayout = props => {
                         avatar={
                             props.images.damianVeiga.childImageSharp.fluid.src
                         }
-                        // content={content.damian.content}
-                        content=""
+                        content={content.damian.content}
                     />
                     {/* <Waypoint onEnter={setNavbarBlur} /> */}
                     <TeamMember
@@ -240,8 +239,7 @@ const LandingLayout = props => {
                         avatar={
                             props.images.lygiaPavitt.childImageSharp.fluid.src
                         }
-                        // content={content.lygia.content}
-                        content=""
+                        content={content.lygia.content}
                     />
                     {/* <Waypoint onEnter={setNavbarBlur} /> */}
                     <TeamMember
@@ -249,8 +247,7 @@ const LandingLayout = props => {
                         avatar={
                             props.images.leoMoreno.childImageSharp.fluid.src
                         }
-                        // content={content.leo.content}
-                        content=""
+                        content={content.leo.content}
                     />
                     {/* <Waypoint onEnter={setNavbarBlur} /> */}
                 </Flex>

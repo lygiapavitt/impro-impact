@@ -48,7 +48,7 @@ class Navbar extends React.Component {
         this.scienceChaptersVisible = 3
 
         this.renderChapters = () => {}
-
+        this.oldMode = this.transparent
         this.state = {
             mode: this.transparent,
             chaptersVisible: 0,
@@ -58,6 +58,12 @@ class Navbar extends React.Component {
 
     handleStateChange(state) {
         this.setState({ menuOpen: state.isOpen })
+        if (state.isOpen) {
+            this.oldMode = this.state.mode
+            this.setOpaque()
+        } else {
+            this.setState(state => ({ mode: this.oldMode }))
+        }
     }
     closeMenu = () => {
         this.setState(state => ({ menuOpen: false }))
@@ -117,6 +123,7 @@ class Navbar extends React.Component {
                             .backgroundColor,
                     },
                     backgroundColor: this.modes[this.opaque].mixBlendMode,
+                    transition: "background-color 0.3s ease 0s",
                 }}
             >
                 <Flex

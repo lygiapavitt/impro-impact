@@ -24,10 +24,10 @@ const InfoBanner = () => (
     >
         <Flex width={halfWidthBreakpoints} flexWrap="wrap" alignItems="center">
             <Box px={paddingBreakpoints} width={1}>
-                <Title my="0">Prochaines représentations</Title>
+                <Title sx={{ my: "10px" }}>Prochaines représentations</Title>
             </Box>
             <Box px={paddingBreakpoints} width={1}>
-                <Title my="0">{content.spectacle}</Title>
+                <Title sx={{ my: "10px" }}>{content.spectacle}</Title>
             </Box>
         </Flex>
         <Flex width={halfWidthBreakpoints} flexWrap="wrap">

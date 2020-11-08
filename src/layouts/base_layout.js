@@ -31,25 +31,31 @@ export const iconImage = graphql`
 const BaseLayout = props => {
     const images = useStaticQuery(graphql`
         query {
-            landingImage: file(relativePath: { eq: "401.jpg" }) {
+            landingImage: file(
+                relativePath: { eq: "helvetia2050/backgrounds/401.jpg" }
+            ) {
                 ...defaultImage
             }
-            damianVeiga: file(relativePath: { eq: "damian_veiga_2.jpg" }) {
+            damianVeiga: file(
+                relativePath: { eq: "landing/damian_veiga_2.jpg" }
+            ) {
                 ...defaultImage
             }
-            lygiaPavitt: file(relativePath: { eq: "lygia_pavitt.jpg" }) {
+            lygiaPavitt: file(
+                relativePath: { eq: "landing/lygia_pavitt.jpg" }
+            ) {
                 ...defaultImage
             }
-            leoMoreno: file(relativePath: { eq: "leo_moreno.jpg" }) {
+            leoMoreno: file(relativePath: { eq: "landing/leo_moreno.jpg" }) {
                 ...defaultImage
             }
-            instagram: file(relativePath: { eq: "instagram-icon.png" }) {
+            instagram: file(relativePath: { eq: "icons/instagram-icon.png" }) {
                 ...iconImage
             }
-            facebook: file(relativePath: { eq: "facebook-icon.png" }) {
+            facebook: file(relativePath: { eq: "icons/facebook-icon.png" }) {
                 ...iconImage
             }
-            mail: file(relativePath: { eq: "mail-icon.png" }) {
+            mail: file(relativePath: { eq: "icons/mail-icon.png" }) {
                 ...iconImage
             }
         }

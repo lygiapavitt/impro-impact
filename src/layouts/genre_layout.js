@@ -30,10 +30,10 @@ export const defaultImage = graphql`
 const GenreLayout = props => {
     const data = useStaticQuery(graphql`
         query {
-            landingImage: file(relativePath: { eq: "genre.jpg" }) {
+            landingImage: file(relativePath: { eq: "genre/genre.jpg" }) {
                 ...defaultImage
             }
-            middleImage: file(relativePath: { eq: "genre_poing.jpg" }) {
+            middleImage: file(relativePath: { eq: "genre/genre_poing.jpg" }) {
                 ...defaultImage
             }
         }

@@ -47,6 +47,7 @@ text {
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
     background: #1c1c1c;
+    height: 2px !important;
 }
 
 /* Position and sizing of clickable cross button */
@@ -80,4 +81,46 @@ text {
 /* Styling of overlay */
 .bm-overlay {
     background: rgba(255, 255, 255, 0.8) !important;
+}
+
+.close-container {
+    position: relative;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.leftright {
+    height: 2px;
+    width: 50px;
+    position: absolute;
+    margin-top: 24px;
+    background-color: #1c1c1c;
+    border-radius: 2px;
+    transform: rotate(45deg);
+    transition: all 0.15s ease-in;
+}
+
+.rightleft {
+    height: 2px;
+    width: 50px;
+    position: absolute;
+    margin-top: 24px;
+    background-color: #1c1c1c;
+    border-radius: 2px;
+    transform: rotate(-45deg);
+    transition: all 0.15s ease-in;
+}
+
+.close-container:hover .leftright {
+    transform: rotate(-45deg);
+    background-color: #1c1c1c;
+}
+.close-container:hover .rightleft {
+    transform: rotate(45deg);
+    background-color: #1c1c1c;
+}
+.close-container:hover label {
+    opacity: 1;
 }

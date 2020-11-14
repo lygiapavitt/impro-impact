@@ -5,5 +5,5 @@ function pause() {
  echo ""
 }
 
-python sync_and_deploy.py
+python ../sync_and_deploy.py
 pause

@@ -16,11 +16,9 @@ Git n'est que l'utilitaire de gestion de versions de fichiers, mais pour collabo
 Les script (déploiement automatique, synchro automatique, etc.) sont écrits en Python car le language permet de développer rapidement des programmes qui sont agnostiques de l'environnement (donc qui fonctionnent pareil sur Mac et Windows par exemple). Pour pouvoir lancer les scripts par contre il vous faut télécharger et installer la dernière version de Python pour votre OS (Mac ou Windows) que vous trouverez [ici](https://www.python.org/downloads/).
 
 1.  **Installer npm**
-
 On va avoir besoin de `npm`, un gestionnaire de package pour le javascript (le language de programmation utilisé pour le site internet). Gatsby par exemple, qui permet de coder le site en question, est installé sur votre machine grâce à `npm`. Vous pouvez télécharger et installer `npm` [à cette adresse](https://nodejs.org/en/download/).
 
 1. **Vérifier les installations**
-
 On va pouvoir vérifier que tout est installé correctement. [Ouvrez une console](https://support.apple.com/fr-ch/guide/terminal/apd5265185d-f365-44cb-8b09-71a064a42125/mac) et essayez de rentrer les commandes suivantes:
 * `git`
 * `npm`

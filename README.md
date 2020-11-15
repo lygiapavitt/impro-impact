@@ -70,10 +70,10 @@ Ceci va installer l'ensemble des package dont le projet dépend, comme par exemp
 
 **Créer un fichier de configuration**
 
-Finalement, il vous faut créer un fichier `config.json` dans la hiérarchie. 
+Finalement, il vous faut créer un fichier `config.json` à la racine du dossier `impro-impact` la hiérarchie avec la commande suivante:
 
 ```
-touch config.json
+echo {"hostname": "eris.ch-dns.net", "username": "xxxxxx", "password": "xxxxxx"} > config.json
 ```
 
 Ce fichier a la tête suivante:

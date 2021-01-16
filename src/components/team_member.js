@@ -12,6 +12,14 @@ import { Parallax } from "react-scroll-parallax"
 class TeamMember extends React.Component {
     constructor(props) {
         super(props)
+
+        this.bgImageXOffset = props.bgImageXOffset
+            ? props.bgImageXOffset
+            : "-200px"
+        this.bgImageYOffset = props.bgImageYOffset
+            ? props.bgImageYOffset
+            : "0px"
+
         this.modalRef = React.createRef()
         this.delay = Math.random() * 10 // between 0 and 10 seconds
         this.numPeople = props.numberOfPeople ? props.numberOfPeople : 3
@@ -117,6 +125,8 @@ class TeamMember extends React.Component {
                     avatar={this.props.avatar}
                     title={this.props.name}
                     content={this.props.content}
+                    bgImageXOffset={this.bgImageXOffset}
+                    bgImageYOffset={this.bgImageYOffset}
                 ></TeamMemberModal>
             </>
         )

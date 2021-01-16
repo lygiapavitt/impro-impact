@@ -61,9 +61,9 @@ class Modal extends React.Component {
                             position: "absolute",
                         }}
                     >
-                        <div class="close-container">
-                            <div class="leftright"></div>
-                            <div class="rightleft"></div>
+                        <div className="close-container">
+                            <div className="leftright"></div>
+                            <div className="rightleft"></div>
                         </div>
                     </Box>
                 </Flex>
@@ -76,6 +76,12 @@ class Modal extends React.Component {
 export class TeamMemberModal extends React.Component {
     constructor(props) {
         super(props)
+        this.bgImageXOffset = props.bgImageXOffset
+            ? props.bgImageXOffset
+            : "-200px"
+        this.bgImageYOffset = props.bgImageYOffset
+            ? props.bgImageYOffset
+            : "0px"
 
         this.modalRef = React.createRef()
 
@@ -87,6 +93,160 @@ export class TeamMemberModal extends React.Component {
     close() {
         this.modalRef.current.close()
     }
+
+    defaultHero() {
+        return (
+            <Hero
+                sx={{
+                    backgroundImage: "url(" + this.props.avatar + ")",
+                    backgroundPosition:
+                        "" + this.bgImageXOffset + " " + this.bgImageYOffset,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "contain",
+                }}
+                css={{
+                    "@media screen and (min-width: 941px)": {
+                        display: "block",
+                    },
+                    "@media screen and (max-width: 940px)": {
+                        display: "none",
+                    },
+                }}
+            >
+                <Box
+                    height="100vh"
+                    sx={{
+                        backgroundImage:
+                            "linear-gradient(to right, transparent, transparent, transparent, " +
+                            this.bgColor +
+                            ", " +
+                            this.bgColor +
+                            ", " +
+                            this.bgColor +
+                            ", " +
+                            this.bgColor +
+                            ")",
+                    }}
+                >
+                    <Flex
+                        flexDirection="column"
+                        height="100vh"
+                        justifyContent="center"
+                    >
+                        <Flex justifyContent="flex-end">
+                            <Box width={0.5} px="40px" py="100px">
+                                <Flex flexDirection="column">
+                                    <Box width={1}>
+                                        <Title
+                                            sx={{
+                                                textAlign: "center",
+                                                fontSize: navbarTitleFontSizeBreakpoints,
+                                                letterSpacing: lettersSpacingBreakpoints,
+                                            }}
+                                        >
+                                            {this.props.title}
+                                        </Title>
+                                    </Box>
+                                    <Box width={1}>
+                                        <Text
+                                            width={1}
+                                            sx={{
+                                                fontSize: 16,
+                                                textAlign: "justify",
+                                            }}
+                                        >
+                                            {this.props.content}
+                                        </Text>
+                                    </Box>
+                                </Flex>
+                            </Box>
+                        </Flex>
+                    </Flex>
+                </Box>
+            </Hero>
+        )
+    }
+
+    mobileHero() {
+        return (
+            <Hero
+                sx={{
+                    backgroundImage: "url(" + this.props.avatar + ")",
+                    backgroundPosition: "center center",
+                    backgroundSize: "cover",
+                }}
+                css={{
+                    "@media screen and (min-width: 941px)": {
+                        display: "none",
+                    },
+                    "@media screen and (max-width: 940px)": {
+                        display: "block",
+                    },
+                }}
+            >
+                <Box
+                    height="100vh"
+                    sx={{
+                        backgroundImage:
+                            "linear-gradient(to bottom, transparent, transparent, transparent, " +
+                            this.bgColor +
+                            ", " +
+                            this.bgColor +
+                            ", " +
+                            this.bgColor +
+                            ")",
+                    }}
+                >
+                    <Flex justifyContent="center">
+                        <Flex
+                            height="100vh"
+                            flexDirection="column"
+                            justifyContent="flex-end"
+                        >
+                            <Box
+                                width={0.8}
+                                mx="auto"
+                                px="40px"
+                                py={[
+                                    "20px",
+                                    "40px",
+                                    "60px",
+                                    "100px",
+                                    "100px",
+                                    "100px",
+                                ]}
+                            >
+                                <Flex flexDirection="column">
+                                    <Box width={1}>
+                                        <Title
+                                            sx={{
+                                                textAlign: "center",
+                                                fontSize: navbarTitleFontSizeBreakpoints,
+                                                letterSpacing: lettersSpacingBreakpoints,
+                                            }}
+                                        >
+                                            {this.props.title}
+                                        </Title>
+                                    </Box>
+                                    <Box width={1}>
+                                        <Text
+                                            width={1}
+                                            sx={{
+                                                fontSize: 16,
+                                                textAlign: "justify",
+                                            }}
+                                        >
+                                            {this.props.content}
+                                        </Text>
+                                    </Box>
+                                </Flex>
+                            </Box>
+                        </Flex>
+                    </Flex>
+                </Box>
+            </Hero>
+        )
+    }
     render() {
         return (
             <Modal
@@ -97,74 +257,8 @@ export class TeamMemberModal extends React.Component {
                         "opacity 0.35s ease-in-out, left 0.35s ease-in-out",
                 }}
             >
-                <Hero
-                    sx={{
-                        backgroundImage: "url(" + this.props.avatar + ")",
-                        backgroundPosition: "-370px",
-                        backgroundSize: "cover",
-                    }}
-                >
-                    <Box
-                        height="100vh"
-                        sx={{
-                            backgroundImage:
-                                "linear-gradient(to right, transparent, transparent, " +
-                                this.bgColor +
-                                ", " +
-                                this.bgColor +
-                                ", " +
-                                this.bgColor +
-                                ")",
-                        }}
-                    >
-                        <Flex
-                            flexDirection="column"
-                            height="100vh"
-                            justifyContent="center"
-                        >
-                            <Flex
-                                justifyContent="space-around"
-                                flexWrap="nowrap"
-                            >
-                                <Box
-                                    width={[0, 0, 0.4, 0.4, 0.4, 0.4]}
-                                    m="auto"
-                                ></Box>
-                                <Box
-                                    width={[1, 1, 0.6, 0.6, 0.6, 0.6]}
-                                    m="auto"
-                                    px="40px"
-                                    py="100px"
-                                >
-                                    <Flex flexDirection="column">
-                                        <Box width={1}>
-                                            <Title
-                                                sx={{
-                                                    textAlign: "center",
-                                                    fontSize: navbarTitleFontSizeBreakpoints,
-                                                    letterSpacing: lettersSpacingBreakpoints,
-                                                }}
-                                            >
-                                                {this.props.title}
-                                            </Title>
-                                        </Box>
-                                        <Box width={1}>
-                                            <Text
-                                                width={1}
-                                                sx={{
-                                                    fontSize: 16,
-                                                    textAlign: "justify",
-                                                }}
-                                            >
-                                                {this.props.content}
-                                            </Text>
-                                        </Box>
-                                    </Flex>
-                                </Box>
-                            </Flex>
-                        </Flex>
-                    </Box>
-                </Hero>
+                {this.defaultHero()}
+                {this.mobileHero()}
             </Modal>
         )
     }

@@ -37,15 +37,33 @@ module.exports = {
             },
         },
         {
-            resolve: `gatsby-plugin-prefetch-google-fonts`,
+            // resolve: `gatsby-plugin-prefetch-google-fonts`,
+            // options: {
+            //     fonts: [
+            //         {
+            //             family: `Montserrat`,
+            //             variants: [`200`, `200italic`, `500`],
+            //             subsets: [`latin`],
+            //         },
+            //     ],
+            // },
+            resolve: `gatsby-plugin-webfonts`,
             options: {
-                fonts: [
-                    {
-                        family: `Montserrat`,
-                        variants: [`200`, `200italic`, `500`],
-                        subsets: [`latin`],
-                    },
-                ],
+                fonts: {
+                    google: [
+                        {
+                            family: `Montserrat`,
+                            variants: [`200`, `200italic`, `500`],
+                            subsets: [`latin`],
+                            //family: "Roboto",
+                            //variants: ["300", "400", "500"],
+                            //subsets: ['latin']
+                            //text: 'Hello'
+                            //fontDisplay: 'swap',
+                            //strategy: 'selfHosted' // 'base64' || 'cdn'
+                        },
+                    ],
+                },
             },
         },
         // this (optional) plugin enables Progressive Web App + Offline functionality

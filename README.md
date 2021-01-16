@@ -37,7 +37,14 @@ Si les commandes sont trouvées par votre terminal, il devrait s'afficher un mes
 
 Ok on a installé assez de bordel maintenant on va commencer à faire des trucs avec tout ça.
 
-La première étape c'est de cloner les fichiers du github. Pour cela il fait ouvrir un terminal et utiliser ce terminal pour [vous déplacez dans un dossier](https://www.howtogeek.com/140679/beginner-geek-how-to-start-using-the-linux-terminal/) dans lequel vous voulez voir apparaître le dossier contenant tout le code. Une fois celà fait, écrivez la commande suivante:
+La première étape c'est de cloner les fichiers du github. Pour cela il fait ouvrir un terminal et utiliser ce terminal pour vous déplacez dans un dossier dans lequel vous voulez voir apparaître le dossier contenant tout le code. Rapidement, les commandes pour vous déplacer dans l'arborescence de fichiers avec un terminal sont les suivantes:
+
+* `ls`: "LiSt" c'est la commande pour lister les fichiers et dossiers actuellement accessible.
+* `cd`: "Change Directory" c'est la commande pour se déplacer. Par exemple si je suis dans le dossier `mon-macbook:alex` je peux faire `cd Documents` pour me retrouver ensuite dans `mon-macbook/Documents:alex`. Pour revenir en arrière je peux faire `cd ..` et je remonte d'un cran dans l'arborescence pour me retrouver à mon point de départ.
+
+Plus d'infos [ici](https://www.howtogeek.com/140679/beginner-geek-how-to-start-using-the-linux-terminal/) au chapitre "Working With Directories and Files":
+
+Une fois que vous êtes dans un dossier où vous voulez voir apparitre le dossier `impro-impact`, écrivez la commande suivante:
 
 ```shell
 git clone https://github.com/Minimata/impro-impact.git
@@ -47,7 +54,13 @@ Cette commande va aller chercher tous les fichiers versionnés sur Github et les
 
 **`npm install`**
 
-Toujours dans votre terminal, déplacez vous maintenant dans le dossier qui vient d'être créé avec tous les fichiers du site dedans et lancez la commande suivante:
+Toujours dans votre terminal, déplacez vous maintenant dans le dossier qui vient d'être créé avec tous les fichiers du site dedans:
+
+```
+cd impro-impact
+```
+
+et lancez la commande suivante:
 
 ```shell
 npm install
@@ -57,7 +70,13 @@ Ceci va installer l'ensemble des package dont le projet dépend, comme par exemp
 
 **Créer un fichier de configuration**
 
-Finalement, il vous faut créer un fichier `config.json` dans la hiérarchie. Ce fichier a la tête suivante:
+Finalement, il vous faut créer un fichier `config.json` à la racine du dossier `impro-impact` la hiérarchie avec la commande suivante:
+
+```
+echo {"hostname": "eris.ch-dns.net", "username": "xxxxxx", "password": "xxxxxx"} > config.json
+```
+
+Ce fichier a la tête suivante:
 
 ```javascript
 {

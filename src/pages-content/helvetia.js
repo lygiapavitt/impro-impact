@@ -56,7 +56,7 @@ let content = {
         cecileJeannet: {
             title: "Cécile Jeannet",
             content:
-                "Cécile Jeannet est enseignante dans les degrés primaires à Neuchâtel depuis 2 ans. Elle pratique l’improvisation théâtrale depuis une dizaine d’année à la Ligue d’Improvisation Neuchâteloise, association qu’elle préside depuis près de trois ans. Son métier lui permet une approche concrète des problématique environnementales et lui apprend a traiter ces thématiques de manière pédagogique.",
+                "Cécile Jeannet est enseignante dans les degrés primaires à Neuchâtel depuis 2 ans. Elle pratique l’improvisation théâtrale depuis une dizaine d’années à la Ligue d’Improvisation Neuchâteloise, association qu’elle préside depuis près de trois ans. Son métier lui permet une approche concrète des problématiques environnementales et lui apprend a traiter ces thématiques de manière pédagogique.",
         },
         thomasDemaurex: {
             title: "Thomas Demaurex",
